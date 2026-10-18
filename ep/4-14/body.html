@@ -1,0 +1,135 @@
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="series" id="series" aria-label="알고리즘 패밀리 시리즈 목록"></div>
+    <div class="kicker">인공지능 알고리즘 패밀리 조직도 · 4-14<span class="fam fam-rl">3부 가문 회합 · 강화 가문</span></div>
+    <canvas class="stagecv" id="heroCv" width="1100" height="340" role="img" aria-label="무늬 카펫이 깔린 방 가운데에 5×5 방 그림이 두 개 놓여 있다. 왼쪽 방에서는 청소봇이 먼지 칸 두 개 사이를 오가며 점수만 올리고, 오른쪽 방에서는 청소봇이 방 전체를 돌며 먼지를 치운다. 각 방 아래에 누적 보상과 청소된 칸 비율 막대가 있다. 왼쪽에 돋보기를 든 초파리 연구원, 오른쪽에 메달을 든 Money-Robo가 서 있다"></canvas>
+    <div class="hero-grid">
+      <div>
+        <h1>강화 가문의 장부 — 보상이 곧 시험 문제다</h1>
+        <p class="lede" style="margin-top:14px">강화학습 에이전트는 <b>보상의 합을 가장 크게</b> 만드는 쪽으로 배운다. 그게 전부다. 우리가 정말 원한 일을 하는지는 모른다. 보상을 잘못 적으면, 에이전트는 점수만 오르고 일은 안 되는 엉뚱한 지름길을 찾아낸다.</p>
+        <p class="lede">이 편에서는 청소봇 쓱싹이에게 보상을 세 가지로 바꿔 주며 학습시킨다. 그리고 강화학습을 잴 때 꼭 봐야 할 세 가지, <b>여러 시드의 평균과 흔들림</b>, <b>처음 보는 배치</b>, <b>보상 말고 실제 목표</b>를 차례로 본다.</p>
+        <div class="chips" aria-label="10분 핵심 경로"><span class="muted">10분 핵심 경로</span><a href="#m2">02 보상 설계 실험실</a><span class="arr">→</span><a href="#d14">담판</a><span class="arr">→</span><a href="#m3">03 무엇을 재나</a></div>
+      </div>
+      <div>
+        <div class="sizebox">
+          <h3>보상 설계 실험실의 재료</h3>
+          <div class="sizegrid">
+            <div class="nn"><b>5×5</b><span>방 (벽 칸 2개, 충전기는 왼쪽 위)</span></div>
+            <div class="nn"><b>8</b><span>먼지 칸</span></div>
+            <div class="nn"><b>40</b><span>한 판의 걸음 수</span></div>
+            <div class="nn"><b>5</b><span>시드 (같은 실험을 다섯 번)</span></div>
+          </div>
+          <p class="foot">Q-Learning이 표를 채우는 원리는 2부 4-9에서 보았다. 이 편은 같은 학습법에 <b>무엇을 보상으로 주느냐</b>만 바꾼다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cast" aria-label="등장인물">
+      <div class="say doc"><img data-who="doc" data-mood="don" alt="" aria-hidden="true"><div class="bub"><span class="who">대부 박사</span>강화 가문의 장부를 엽니다. 이 가문은 보상의 합을 최대로 만들 뿐이에요. 그러니 오늘은 <b>보상 자체가 시험 문제</b>입니다.</div></div>
+      <div class="say robo"><img data-who="robo" data-mood="reward" alt="" aria-hidden="true"><div class="bub"><span class="who">Money-Robo</span>점수가 높으면 일도 잘한 거지. 누적 보상 최고점, 메달은 내 거야.</div></div>
+      <div class="say fly"><img data-who="fly" data-mood="magnify" alt="" aria-hidden="true"><div class="bub"><span class="who">초파리 연구원</span>점수 말고 방을 봐. 먼지가 정말 치워졌는지는 따로 재야지.</div></div>
+    </div>
+    <aside class="prereq" aria-label="먼저 읽으면 좋은 편">
+      <b>먼저 읽으면 좋은 편</b>
+      <span><a href="4-11_fair_rules.html">4-11 가문의 규칙</a> — 공정하게 재는 법, 기준선 · <a href="4-4_reinforcement.html">4-4 강화 가문</a> — 상태·행동·보상, 탐험과 활용</span>
+      <span>같은 세로줄: 가계도 → <a href="4-4_reinforcement.html">4-4 강화 가문</a> · 명부 → <a href="4-9_rl_three.html">4-9 강화 삼대</a></span>
+    </aside>
+  </div>
+</header>
+
+<!-- ═══════════ 01 학습 곡선과 시드 ═══════════ -->
+<section class="part" id="m1">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no rl">01</div>
+    <div class="en">Learning curves &amp; seeds</div>
+    <h2>학습 곡선과 시드 — 한 번 돌린 곡선은 운일 수 있다</h2>
+    <p class="lin">같은 실험을 여러 시드로 돌려 평균과 흔들림을 함께 본다</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>강화학습은 운이 많이 끼는 학습이다. 처음에는 무작위로 움직이며 탐험하고(ε), 어느 칸에서 무엇을 먼저 해 보느냐에 따라 표가 다르게 채워진다. 이 무작위의 출발점을 정하는 숫자가 <b>시드</b>다.</p>
+      <p>오른쪽 그래프는 같은 청소 방, 같은 보상(02장의 2번 보상)으로 쓱싹이를 1,500판씩 학습시킨 기록이다. 시드만 다섯 개로 바꿨다. 가로는 판 수, 세로는 한 판에 받은 보상의 합(30판 평균으로 다듬음)이다.</p>
+      <p>굵은 선이 다섯 시드의 평균, 옅은 띠가 가장 낮은 시드와 가장 높은 시드 사이다. 시드 하나만 고르면 그 한 줄만 보인다.</p><p style="margin:0">이 방은 작고 단순해서 시드끼리 차이가 크지 않다. 그래도 같은 방법이 시드에 따라 수십 판씩 늦거나 빠르다. 심층 강화학습처럼 문제가 커지면 이 흔들림이 훨씬 커져서, 시드 몇 개만 바꿔도 두 방법의 순위가 뒤집힌다는 보고가 있다(Henderson 외, 2018). 그래서 한 줄로 "이 방법이 더 빨리 배운다"고 말하지 않는다.</p>
+    </div>
+    <div class="card">
+      <span class="tag">학습 곡선 · 시드 다섯 개</span>
+      <div class="cwrap"><canvas class="fig" id="lcCv" aria-label="가로축 판 수, 세로축 한 판의 보상 합. 다섯 시드의 평균 곡선과 최솟값·최댓값 띠, 그리고 고른 시드 하나의 곡선"></canvas></div>
+      <div class="pills" id="seedPills" role="group" aria-label="시드 하나 골라 보기"></div>
+      <div class="caption" id="lcInfo" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 02 보상 설계 실험실 ═══════════ -->
+<section class="part" id="m2">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no rl">02</div>
+    <div class="en">Reward design lab</div>
+    <h2>보상 설계 실험실 — 무엇을 주느냐가 무엇을 배우느냐다</h2>
+    <p class="lin">같은 방, 같은 학습법, 보상만 세 가지</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>5×5 방에 먼지 칸이 8개 있다. 쓱싹이는 왼쪽 위 충전기에서 출발해 40걸음 동안 움직인다. 우리가 원하는 일은 하나, <b>먼지를 모두 치우는 것</b>이다. 그런데 쓱싹이는 이 말을 알아듣지 못한다. 쓱싹이가 아는 것은 보상 숫자뿐이다.</p>
+      <div id="sweepHost"></div>
+      <div class="tw"><table class="tb"><thead><tr><th>보상</th><th>규칙</th></tr></thead><tbody>
+        <tr><td><b>1번</b></td><td>먼지 무늬 칸을 밟을 때마다 +1 (이미 치운 칸이어도)</td></tr>
+        <tr><td><b>2번</b></td><td>먼지 칸을 <b>처음</b> 치울 때만 +1, 다시 밟으면 0, 걸음마다 −0.01</td></tr>
+        <tr><td><b>3번</b></td><td>1번 + 충전기로 돌아오면 +5 (그 판 끝)</td></tr>
+      </tbody></table></div>
+      <p style="margin:10px 0 0">1번은 그럴듯해 보인다. 먼지 칸을 밟으면 치우니까. 하지만 "치운 칸을 또 밟아도 점수"라는 빈틈이 있다. 쓱싹이가 그 빈틈을 찾아내는지 직접 학습시켜 보자.</p>
+    </div>
+    <div class="card">
+      <span class="tag">배운 대로 한 판 · 탐험 없이</span>
+      <div class="pills" id="desPills" role="group" aria-label="보상 고르기"><button data-v="1" aria-pressed="true">1번 · 밟을 때마다</button><button data-v="2" aria-pressed="false">2번 · 처음 치울 때만</button><button data-v="3" aria-pressed="false">3번 · 1번 + 충전기</button></div>
+      <div class="cwrap" style="margin-top:10px"><canvas class="fig" id="roomCv" aria-label="5×5 방 그림. 먼지 칸, 벽 칸, 충전기, 쓱싹이의 위치와 지나간 길, 칸마다 밟은 횟수가 표시된다"></canvas></div>
+      <div class="ctrls"><button class="btn go" id="roomPlay">▶ 한 판 보기</button><button class="btn" id="roomReset">처음으로</button><span class="muted" style="font-size:13px" id="roomStep"></span></div>
+      <div class="stat" id="roomStat" style="margin-top:10px"></div>
+      <div class="caption" id="roomInfo" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <span class="tag">세 보상 한눈에 · 시드 다섯 개 평균</span>
+    <div class="cwrap"><canvas class="fig" id="cmpCv" aria-label="보상 1번, 2번, 3번별로 누적 보상(왼쪽 막대)과 청소된 칸 비율(오른쪽 막대)을 나란히 그린 막대그래프"></canvas></div>
+    <div class="legend"><span><i style="background:var(--amber)"></i>누적 보상 (그 보상 규칙의 점수)</span><span><i style="background:var(--gfp)"></i>청소된 칸 비율 (실제 목표)</span></div>
+    <p class="caption" id="cmpInfo"></p>
+  </div>
+
+  <div class="duel" id="d14"></div>
+  <h3 style="margin:26px 0 10px">✓ 확인 문제</h3>
+  <div class="quiz" data-quiz="q14"></div>
+</div>
+</section>
+
+<!-- ═══════════ 03 무엇을 재나 ═══════════ -->
+<section class="part" id="m3">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no rl">03</div>
+    <div class="en">What to measure</div>
+    <h2>무엇을 재나 — 강화 가문 장부의 세 칸</h2>
+    <p class="lin">평균과 흔들림, 처음 보는 배치, 그리고 실제 목표</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">장부 세 칸</span>
+      <p><b>① 평균과 흔들림.</b> 시드 여러 개로 돌려 누적 보상의 평균과 범위를 함께 적는다. 01장처럼 한 줄 곡선은 운일 수 있다.</p>
+      <p><b>② 처음 보는 배치.</b> 배운 방이 아닌 새 배치에서도 되는지 본다. 오른쪽 표의 "처음 보는 방"은 먼지와 벽의 자리를 바꾼 방이다. 원래 방에서 배운 표를 그대로 가져가면 어떻게 되는지 본다.</p>
+      <p style="margin:0"><b>③ 실제 목표 따로 재기.</b> 보상은 우리가 원하는 일을 숫자로 옮긴 <b>대리 지표</b>일 뿐이다. 청소라면 "청소된 칸 비율"처럼, 보상과 따로 실제 목표를 잰다. 둘이 어긋나면 보상을 다시 설계한다. 실제로도 보트 경주 게임에서 결승선 대신 점수 아이템이 있는 자리를 계속 맴도는 에이전트가 보고된 적이 있다(Clark &amp; Amodei, 2016).</p>
+    </div>
+    <div class="card">
+      <span class="tag">장부 · 실제 계산값</span>
+      <div class="tw" id="ledger"></div>
+      <p class="caption" id="ledgerInfo"></p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;border-left:4px solid var(--amber)">
+    <span class="tag">실전 체크 ④</span>
+    <p style="margin:0;font-size:17px"><b>강화학습은 보상 말고 실제 목표를 따로 재고, 여러 시드로 돌려 평균과 흔들림을 함께 보고한다.</b></p>
+  </div>
+</div>
+</section>

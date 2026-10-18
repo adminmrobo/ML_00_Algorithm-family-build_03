@@ -1,0 +1,157 @@
+<style>
+.cm12{display:grid;grid-template-columns:96px repeat(2,minmax(0,1fr));gap:6px;font-size:14px}
+.cm12 .h{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.35}
+.cm12 .cell{border:2px solid var(--rule);border-radius:12px;padding:10px 12px;background:var(--panel2);min-height:96px;display:flex;flex-direction:column;gap:4px}
+.cm12 .cell b{font-size:26px;font-variant-numeric:tabular-nums;line-height:1.1}
+.cm12 .cell span{font-size:13px;color:var(--muted)}
+.cm12 .cell .ppl{display:flex;flex-wrap:wrap;gap:3px;align-items:flex-end;min-height:30px}
+.cm12 .cell .ppl canvas{image-rendering:pixelated}
+.cm12 .ok{border-color:var(--gfp)} .cm12 .bad{border-color:var(--eye)}
+.cm12 .ok b{color:var(--gfp)} .cm12 .bad b{color:var(--eye)}
+.mt12 td:first-child{white-space:nowrap;font-weight:700}
+.stat.s4{grid-template-columns:repeat(4,minmax(0,1fr))}.stat.s5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:620px){.stat.s4,.stat.s5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.chk{display:flex;gap:10px;align-items:flex-start;border:2px dashed var(--amber);border-radius:12px;padding:10px 14px;margin:18px 0 0;font-size:15px}
+.chk b{color:var(--amber);white-space:nowrap}
+@media (max-width:620px){.cm12{grid-template-columns:64px repeat(2,minmax(0,1fr))}.cm12 .cell b{font-size:21px}}
+</style>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="series" id="series" aria-label="알고리즘 패밀리 시리즈 목록"></div>
+    <div class="kicker">인공지능 알고리즘 패밀리 조직도 · 4-12<span class="fam fam-sup">3부 가문 회합 · 지도 가문</span></div>
+    <canvas class="stagecv" id="heroCv" width="1100" height="340" role="img" aria-label="초록·빨강 등불이 달린 네 칸 서랍장 앞, 가운데에 네 칸 장부(맞힌 사기, 놓친 사기, 잘못 막은 정상, 맞힌 정상)가 펼쳐지고 정확도 99%와 재현율 0%가 나란히 깜박인다. 왼쪽에 초파리 연구원, 오른쪽에 Money-Robo가 서 있다"></canvas>
+    <div class="hero-grid">
+      <div>
+        <h1>지도 가문의 장부 — 정확도 99%가 꼴찌일 수 있다</h1>
+        <p class="lede" style="margin-top:14px">분류 모델의 성적표는 정확도 하나가 아니다. 사기 거래 1,000건 중 10건을 찾는 문제라면, "전부 정상"이라고만 답해도 정확도가 99%다. 사기는 한 건도 못 잡았는데 말이다.</p>
+        <p class="lede">그래서 지도 가문의 장부는 <b>네 칸</b>(혼동 행렬)에서 시작한다. 맞힌 것과 틀린 것을 종류별로 나눠 적고, <b>무엇을 놓치면 큰일인지</b>에 따라 정밀도·재현율 같은 지표를 고른다. 숫자를 맞히는 회귀는 오차를 <b>어떻게 더하느냐</b>(MAE와 RMSE)를 고른다.</p>
+        <div class="chips" aria-label="10분 핵심 경로"><span class="muted">10분 핵심 경로</span><a href="#m1">01 네 칸 장부</a><span class="arr">→</span><a href="#m2">02 문턱</a><span class="arr">→</span><a href="#d12">담판</a></div>
+      </div>
+      <div>
+        <div class="sizebox">
+          <h3>이 편의 장부</h3>
+          <div class="sizegrid">
+            <div class="nn"><b>1,000</b><span>처음 보는 거래 (사기 10건, 1%)</span></div>
+            <div class="nn"><b>3,000</b><span>배울 거래 (사기 30건)</span></div>
+            <div class="nn"><b>4</b><span>혼동 행렬의 칸</span></div>
+            <div class="nn"><b>6</b><span>지표: 정확도 · 정밀도 · 재현율 · F1 · MAE · RMSE</span></div>
+          </div>
+          <p class="foot">거래마다 결제 금액과 평소 결제 장소에서 떨어진 거리 두 가지만 본다. 모델은 4-7에서 만난 로지스틱 회귀다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cast" aria-label="등장인물">
+      <div class="say doc"><img data-who="doc" data-mood="don" alt="" aria-hidden="true"><div class="bub"><span class="who">대부 박사</span>지도 가문의 장부를 엽니다. 무엇을 놓치면 큰일인지에 따라 지표가 달라져요. 분류는 네 칸에서 출발하고, 회귀는 오차를 어떻게 더할지 고릅니다.</div></div>
+      <div class="say robo"><img data-who="robo" data-mood="calc" alt="" aria-hidden="true"><div class="bub"><span class="who">Money-Robo</span>정확도 99%. 계산기가 그렇다는데 무슨 말이 더 필요해?</div></div>
+      <div class="say fly"><img data-who="fly" data-mood="magnify" alt="" aria-hidden="true"><div class="bub"><span class="who">초파리 연구원</span>그 99% 안에 사기는 몇 건 들어 있어? 장부를 칸별로 펼쳐 봐.</div></div>
+    </div>
+    <aside class="prereq" aria-label="먼저 읽으면 좋은 편">
+      <b>먼저 읽으면 좋은 편</b>
+      <span><a href="4-11_fair_rules.html">4-11 가문의 규칙</a> — 처음 보는 데이터로 재는 법과 기준선 · <a href="4-2_supervised.html#m2">4-2 지도 가문 · 02 회귀·분류</a></span>
+      <span>같은 세로줄: 가계도 → <a href="4-2_supervised.html">4-2 지도 가문</a> · 명부 → <a href="4-6_regression_seven.html">4-6 회귀파 일곱</a> · <a href="4-7_classification_eight.html">4-7 분류파 여덟</a></span>
+    </aside>
+  </div>
+</header>
+
+<!-- ═══════════ 01 혼동 행렬 ═══════════ -->
+<section class="part" id="m1">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no sup">01</div>
+    <div class="en">Confusion matrix</div>
+    <h2>네 칸 장부 — 혼동 행렬</h2>
+    <p class="lin">맞힌 것과 틀린 것을 종류별로 나눠 적는다</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>카드 회사의 거래 1,000건을 모델이 하나씩 본다. 모델은 "의심 거래"라고 막거나, "정상"이라고 통과시킨다. 진짜 정답은 나중에 밝혀진다. 그러면 거래마다 네 경우 중 하나가 된다.</p>
+      <ul style="margin:0 0 10px;padding-left:20px">
+        <li><b>맞힌 사기</b>: 사기를 막았다 (참양성)</li>
+        <li><b>놓친 사기</b>: 사기를 통과시켰다 (거짓음성). 피해가 난다</li>
+        <li><b>잘못 막은 정상</b>: 정상 고객을 막았다 (거짓양성). 고객이 불편하다</li>
+        <li><b>맞힌 정상</b>: 정상을 통과시켰다 (참음성)</li>
+      </ul>
+      <p style="margin:0">정확도는 맞힌 두 칸을 더해 전체로 나눈 값이다. 그래서 정상이 990건이나 되면, 사기 칸이 텅 비어도 정확도는 99%가 나온다. 지표는 모두 이 네 칸에서 계산한다.</p>
+      <div id="m1npc"></div>
+    </div>
+    <div class="card">
+      <span class="tag">처음 보는 거래 1,000건 · 모델을 골라 장부를 펼친다</span>
+      <div class="pills" role="group" aria-label="모델 고르기"><button data-v="base" aria-pressed="true">전부 "정상"</button><button data-v="lg" aria-pressed="false">로지스틱 (문턱 조정)</button></div>
+      <div class="cm12" id="cm1" style="margin-top:12px" aria-live="polite"></div>
+      <div class="stat s4" id="cm1Stat" style="margin-top:12px"></div>
+      <div class="say asst" style="margin-top:12px"><img data-who="asst" data-mood="confusion" alt="" aria-hidden="true"><div class="bub"><span class="who">참모 조수</span>가로줄은 진짜 정답, 세로줄은 모델의 판단이에요. 초록 칸은 맞힌 것, 빨간 칸은 틀린 것. 사람 그림 하나가 거래 한 건이고, 머리 위 <b>?</b>는 모델이 "의심 거래"라고 막은 거래예요(사람 그림은 사기 칸만 한 건씩, 정상 칸은 일부만 그렸어요).</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 02 문턱과 정밀도–재현율 ═══════════ -->
+<section class="part" id="m2">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no sup">02</div>
+    <div class="en">Threshold, precision &amp; recall</div>
+    <h2>문턱 하나로 바뀌는 장부 — 정밀도와 재현율</h2>
+    <p class="lin">더 많이 잡을까, 덜 틀리게 막을까</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">거래 평면과 경계 (처음 보는 1,000건)</span>
+      <div class="cwrap"><canvas class="fig" id="scCv" aria-label="가로축 결제 금액, 세로축 평소 장소에서의 거리(둘 다 로그 눈금) 평면에 정상 거래 990개는 파란 점, 사기 10개는 주황 다이아몬드로 찍혀 있고, 문턱에 따라 움직이는 경계선 오른쪽 위가 의심 거래 구역으로 칠해진다"></canvas></div>
+      <label for="thSl" style="display:block;font-size:14px;color:var(--muted);margin-top:8px">문턱 (사기 확률이 이 값 이상이면 막는다): <b id="thVal" class="num" style="color:var(--text)">0.44</b></label>
+      <input type="range" id="thSl" min="1" max="95" step="1" value="44">
+      <div class="cm12" id="cm2" style="margin-top:10px" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <span class="tag">정밀도–재현율 곡선</span>
+      <div class="cwrap"><canvas class="fig" id="prCv" aria-label="가로축 재현율, 세로축 정밀도. 문턱을 높은 값부터 내릴 때의 곡선과 지금 문턱의 위치를 나타내는 점"></canvas></div>
+      <div class="stat s5" id="prStat" style="margin-top:10px"></div>
+      <div class="tw" style="margin-top:12px"><table class="tb mt12"><thead><tr><th>지표</th><th>질문</th><th>언제 중요한가</th></tr></thead><tbody>
+        <tr><td>정확도</td><td>전체 중 몇 개 맞혔나</td><td>두 종류가 비슷하게 많을 때만</td></tr>
+        <tr><td>정밀도</td><td>"사기"라고 막은 것 중 진짜 사기는?</td><td>잘못 막으면 손해가 클 때 (정상 고객 불편)</td></tr>
+        <tr><td>재현율</td><td>진짜 사기 중 몇 개 잡았나</td><td>놓치면 손해가 클 때 (사기 피해, 질병)</td></tr>
+        <tr><td>F1</td><td>정밀도와 재현율의 조화 평균</td><td>둘 다 신경 쓸 때</td></tr>
+        <tr><td>MAE</td><td>평균적으로 얼마나 빗나갔나</td><td>오차 크기를 그대로 볼 때 (03장)</td></tr>
+        <tr><td>RMSE</td><td>큰 오차에 벌점을 더 준 평균</td><td>큰 실수가 특히 위험할 때 (03장)</td></tr>
+      </tbody></table></div>
+    </div>
+  </div>
+  <div class="pair">
+    <div><div class="ptag nn">정밀도 = 맞힌 사기 ÷ 막은 거래</div><p>문턱을 올리면 확실한 것만 막는다. 헛경보(잘못 막은 정상)가 줄어 정밀도가 오르지만, 애매한 사기를 놓친다.</p></div>
+    <div><div class="ptag nn">재현율 = 맞힌 사기 ÷ 진짜 사기</div><p>문턱을 내리면 조금만 수상해도 막는다. 놓친 사기가 줄어 재현율이 오르지만, 정상 고객을 더 많이 막는다.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 03 회귀 지표 ═══════════ -->
+<section class="part" id="m3">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no sup">03</div>
+    <div class="en">MAE vs RMSE</div>
+    <h2>회귀의 장부 — 오차를 어떻게 더할까</h2>
+    <p class="lin">평균 오차가 같아도, 큰 실수 하나는 다르게 보인다</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>배달 앱이 주문 열 건의 도착 시간을 예측했다. 막대 하나가 한 건의 오차(분)다. 위로 솟으면 늦게, 아래로 내려가면 일찍 도착했다는 뜻이다.</p>
+      <p><b>MAE</b>(평균 절대 오차)는 오차의 크기를 그대로 평균 낸다. <b>RMSE</b>(제곱 평균 제곱근 오차)는 오차를 제곱해 평균 낸 뒤 다시 제곱근을 씌운다. 제곱을 하므로 큰 오차가 훨씬 크게 반영된다.</p>
+      <p style="margin:0">모델 A는 매번 4분쯤 빗나간다. 모델 B는 아홉 번을 거의 맞히고 한 번 36분 늦는다. 두 모델의 MAE는 비슷하지만 RMSE는 세 배 가까이 차이 난다. 36분 늦는 배달이 특히 치명적이라면 RMSE로 재야 한다.</p>
+    </div>
+    <div class="card">
+      <span class="tag">오차 막대와 두 지표</span>
+      <div class="pills" role="group" aria-label="모델 고르기"><button data-v="A" aria-pressed="true">모델 A · 고르게 빗나감</button><button data-v="B" aria-pressed="false">모델 B · 한 번 크게 빗나감</button></div>
+      <div class="cwrap" style="margin-top:10px"><canvas class="fig" id="errCv" aria-label="주문 열 건의 예측 오차를 0을 기준으로 위아래 막대로 그린 그림과 MAE, RMSE 높이의 가로선"></canvas></div>
+      <div class="ctrls"><button class="btn" id="bigBtn" aria-pressed="false">큰 실수 하나 더하기 (+40분)</button></div>
+      <div class="stat s4" id="errStat" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <div class="duel" id="d12"></div>
+  <div class="chk" role="note"><b>실전 체크 ②</b><span>데이터가 한쪽으로 쏠렸으면 정확도 대신 정밀도·재현율을 본다. 놓침과 헛경보 중 무엇이 더 비싼지 먼저 정한다.</span></div>
+  <h3 style="margin:26px 0 10px">✓ 확인 문제</h3>
+  <div class="quiz" data-quiz="q12"></div>
+</div>
+</section>

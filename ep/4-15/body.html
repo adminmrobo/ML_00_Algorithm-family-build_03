@@ -1,0 +1,194 @@
+<style>
+#owner{margin-top:6px}
+.wrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.wrow label{font-size:13.5px;color:var(--muted)}.wrow input{width:100%}
+#pathBox .trail{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;color:var(--muted);min-height:20px}
+#pathBox .trail span{background:var(--panel2);border:1px solid var(--rule);border-radius:999px;padding:2px 10px}
+#pathBox .trail i{font-style:normal}
+#pathBox .qq{font-family:var(--serif);font-weight:800;font-size:19px;margin:10px 0 8px}
+#pathBox .qopts{flex-wrap:wrap}
+#pathBox .endcard{border:2px solid var(--amber);border-radius:12px;padding:12px 14px;margin-top:10px;background:var(--panel2)}
+.evalpath{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.evalpath a{border:1px solid var(--rule);border-radius:999px;padding:4px 12px;text-decoration:none;background:var(--panel2)}.evalpath i{font-style:normal;color:var(--muted)}
+.maptree{font-size:14.5px;line-height:1.75;margin:0;padding-left:0;list-style:none}
+.maptree ul{list-style:none;margin:2px 0 4px 18px;padding-left:14px;border-left:2px solid var(--rule)}
+.maptree a{font-weight:700}
+.check5{counter-reset:c;list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.check5 li{counter-increment:c;display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}
+.check5 li::before{content:counter(c);width:36px;height:36px;border-radius:50%;border:3px double var(--amber);display:grid;place-items:center;font-family:var(--pix);font-weight:700;color:var(--amber)}
+.check5 a{white-space:nowrap;font-size:13.5px}
+.wcell img.wn{width:28px;height:28px;object-fit:contain;vertical-align:middle}.wcell .wd{display:inline-block;width:28px;text-align:center;font-weight:800;color:var(--muted)}
+#poster{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.pgrp{border:2px solid var(--fc);border-radius:12px;padding:10px 12px;background:var(--panel)}
+.pgrp .ph{display:flex;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:8px}.pgrp .ph b{font-family:var(--serif);font-size:17px;color:var(--fc)}.pgrp .ph span{font-size:12.5px;color:var(--muted)}
+.pcells{display:flex;flex-wrap:wrap;gap:6px}
+.pcell{border:1px solid var(--fc);border-radius:8px;padding:4px 9px;font-size:13.5px;text-decoration:none;color:var(--text);background:var(--panel2)}
+.pcell:hover{background:var(--fc);color:var(--bg)}
+.pcell .dbl{margin-left:6px;font-size:11px;color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:0 5px}
+@media (max-width:640px){.wrow{grid-template-columns:1fr}.check5 li{grid-template-columns:40px 1fr}.check5 a{grid-column:2}}
+@media print{
+  body>*:not(#m4){display:none!important}body::before{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  #m4{display:block!important;padding:0;border:0}#m4 .part-head .lin,#m4 .part-head .en,#finalScore,#recapCard,#printBtn,#m4 .ctrls,#m4 .caption{display:none!important}
+  #m4 .card{background:#fff!important;border:0;box-shadow:none;padding:0}
+  .pgrp{break-inside:avoid;background:#fff}.pcell{background:#fff;color:#000}
+}
+</style>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="series" id="series" aria-label="알고리즘 패밀리 시리즈 목록"></div>
+    <div class="kicker">인공지능 알고리즘 패밀리 조직도 · 4-15<span class="fam fam-ens">3부 가문 회합 · 마지막 담판</span></div>
+    <canvas class="stagecv" id="heroCv" width="1100" height="340" role="img" aria-label="회합 테이블이 놓인 방 가운데에 큰 놋쇠 저울이 흔들린다. 왼쪽 접시에는 설명과 속도, 오른쪽 접시에는 성능이 올려져 있다. 왼쪽에 돋보기를 든 초파리 연구원, 오른쪽에 계산기를 든 Money-Robo가 서 있다"></canvas>
+    <div class="hero-grid">
+      <div>
+        <h1>마지막 담판 — 성능만으로는 고르지 않는다</h1>
+        <p class="lede" style="margin-top:14px">열네 구역을 지나 마지막 회합이다. 네 가문, 서른네 조직원을 만났고, 그들을 공정하게 재는 법도 배웠다. 남은 질문은 하나다. <b>실제로 배포할 모델을 어떻게 고르나?</b></p>
+        <p class="lede">정확도가 가장 높은 모델이 늘 답은 아니다. 예측이 얼마나 빠르고 싼지, 왜 그 답을 냈는지 설명할 수 있는지도 함께 저울에 올린다. 이 편 끝에는 알고리즘 선택 지도, 다섯 줄 체크리스트, 그리고 시즌 결산이 있다.</p>
+        <div class="chips" aria-label="10분 핵심 경로"><span class="muted">10분 핵심 경로</span><a href="#m1">01 저울</a><span class="arr">→</span><a href="#m2">02 선택 지도</a><span class="arr">→</span><a href="#m4">04 시즌 결산</a></div>
+      </div>
+      <div>
+        <div class="sizebox">
+          <h3>시즌의 장부</h3>
+          <div class="sizegrid">
+            <div class="nn"><b>4</b><span>가문 (지도 · 비지도 · 강화 · 앙상블 연합)</span></div>
+            <div class="nn"><b>34</b><span>조직원 (알고리즘 칸, 겹침 포함)</span></div>
+            <div class="nn"><b>15</b><span>구역 (3부 × 5편)</span></div>
+            <div class="nn"><b>3</b><span>저울의 칸 (성능 · 비용 · 설명)</span></div>
+          </div>
+          <p class="foot">세력도는 이 편의 담판까지 열어야 15구역이 모두 찬다. 결산은 04장에 있다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cast" aria-label="등장인물">
+      <div class="say doc"><img data-who="doc" data-mood="scale" alt="" aria-hidden="true"><div class="bub"><span class="who">대부 박사</span>마지막 회합입니다. 배포할 모델은 성능 · 비용 · 설명의 저울로 고르죠. 그리고 어느 칸이 무거운지는 문제의 주인이 정합니다.</div></div>
+      <div class="say robo"><img data-who="robo" data-mood="calc" alt="" aria-hidden="true"><div class="bub"><span class="who">Money-Robo</span>계산은 끝났어. 제일 잘 맞히는 큰 앙상블에 건다. 시즌 우승도 내 거다.</div></div>
+      <div class="say fly"><img data-who="fly" data-mood="magnify" alt="" aria-hidden="true"><div class="bub"><span class="who">초파리 연구원</span>그 앙상블, 대출을 거절당한 사람한테 이유를 말해 줄 수 있어?</div></div>
+    </div>
+    <aside class="prereq" aria-label="먼저 읽으면 좋은 편">
+      <b>먼저 읽으면 좋은 편</b>
+      <span><a href="4-11_fair_rules.html">4-11 가문의 규칙</a> — 시험지는 마지막에 한 번만, 기준선과 함께 · <a href="4-5_ensemble.html">4-5 앙상블 연합</a> — 여럿을 묶으면 왜 강해지나</span>
+      <span>같은 세로줄: <a href="4-5_ensemble.html">가계도 → 4-5 앙상블 연합</a> · <a href="4-10_ensemble_lineage.html">명부 → 4-10 앙상블 계보</a></span>
+    </aside>
+  </div>
+</header>
+
+<!-- ═══════════ 01 결승 저울 ═══════════ -->
+<section class="part" id="m1">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no ens">01</div>
+    <div class="en">The scale</div>
+    <h2>결승 저울 — 성능 · 비용 · 설명</h2>
+    <p class="lin">같은 대출 데이터, 두 후보. 무게를 바꾸면 기우는 쪽이 바뀐다</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>대출 신청 800건이 있다. 특징은 소득, 부채 비율, 근속 연수, 신용 이력 길이, 저축 여부, 나이, 거주 기간, 문의 횟수의 여덟 개이고, 정답은 "갚았나"다. 후보는 둘이다.</p>
+      <p><b>로지스틱 회귀</b>는 특징마다 가중치를 하나씩 곱해 더한다. 숫자 9개로 끝나고, 그 숫자가 곧 설명이다. <b>큰 앙상블</b>은 GBM 두 벌과 랜덤 포레스트의 확률을 평균한다. 트리 수백 그루에 질문과 잎이 수천 개다.</p>
+      <p style="margin:0">이 페이지가 브라우저에서 두 모델을 실제로 학습시키고, 정확도와 걸린 시간을 직접 잰다. 그다음 저울의 세 칸에 얼마만큼 무게를 줄지 골라 보자.</p>
+    </div>
+    <div class="card">
+      <span class="tag">저울 · 무게는 문제의 주인이 정한다</span>
+      <div class="pills" id="owner" role="group" aria-label="문제 고르기"><button data-v="even" aria-pressed="true">세 칸 같은 무게</button><button data-v="loan" aria-pressed="false">대출 심사</button><button data-v="reco" aria-pressed="false">상품 추천</button></div>
+      <p class="muted" id="ownerInfo" style="font-size:13.5px;margin:6px 0 0"></p>
+      <div class="cwrap" style="margin-top:8px"><canvas class="fig" id="scaleCv" aria-label="저울. 왼쪽 접시는 초파리의 로지스틱, 오른쪽 접시는 Money-Robo의 큰 앙상블이다. 각 칸에서 앞선 쪽 접시에 성능, 비용, 설명 추가 무게만큼 올라가고, 합에 따라 저울이 기운다"></canvas></div>
+      <div class="wrow">
+        <label>성능 무게 <b id="wv_p" class="num">1</b><input type="range" id="w_p" min="0" max="3" step="0.5" value="1"></label>
+        <label>비용 무게 <b id="wv_c" class="num">1</b><input type="range" id="w_c" min="0" max="3" step="0.5" value="1"></label>
+        <label>설명 무게 <b id="wv_e" class="num">1</b><input type="range" id="w_e" min="0" max="3" step="0.5" value="1"></label>
+      </div>
+    </div>
+  </div>
+  <div id="scaleInfo" style="margin-top:14px" aria-live="polite"></div>
+  <div class="two" style="margin-top:14px">
+    <div class="card">
+      <span class="tag">설명 칸 · 로지스틱의 가중치 8개</span>
+      <div class="cwrap"><canvas class="fig" id="wCv" aria-label="로지스틱 회귀가 배운 특징별 가중치 막대. 소득이 가장 큰 양수, 부채 비율이 가장 큰 음수, 저축 여부가 양수이고 거주 기간과 문의 횟수는 0에 가깝다"></canvas></div>
+      <p class="caption" style="margin-bottom:0">표준화한 특징 기준. 오른쪽(초록)은 갚을 쪽으로, 왼쪽(빨강)은 못 갚을 쪽으로 민다. "부채 비율이 높아서 거절"처럼 바로 말할 수 있다. 다만 근속 연수 × 신용 이력처럼 <b>둘이 함께 작용하는 효과</b>는 직선 하나로 담지 못해 가중치가 0 근처로 나온다. 앙상블이 더 맞히는 자리가 바로 거기다.</p>
+    </div>
+    <div class="card">
+      <span class="tag">앙상블은 어떻게 설명하나</span>
+      <p>트리 수백 그루의 질문을 사람이 다 읽을 수는 없다. 그래서 <b>따로 설명 도구</b>를 붙인다. 특징 중요도는 모델 전체에서 어느 특징을 많이 썼는지, SHAP·LIME은 예측 하나를 특징별 기여로 나눠 보여 준다.</p>
+      <p style="margin:0">설명 도구는 쓸모가 크지만 모델 자체가 아니라 모델을 <b>흉내 낸 요약</b>이다. 결정의 이유가 중요한 일에는 처음부터 해석 가능한 모델을 쓰자는 주장도 있다(레퍼런스 E-2의 Rudin, 2019). 어느 쪽이 맞는지는 문제마다 다르다.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 02 알고리즘 선택 지도 ═══════════ -->
+<section class="part" id="m2">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no ens">02</div>
+    <div class="en">Choice map</div>
+    <h2>알고리즘 선택 지도 — 질문이 가문을 정한다</h2>
+    <p class="lin">질문에 답하며 따라가면 출발할 가문과 기준선이 나온다</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">따라가기</span>
+      <div id="pathBox" aria-live="polite"></div>
+    </div>
+    <div class="card">
+      <span class="tag">지도 전체</span>
+      <ul class="maptree">
+        <li><b>정답 y가 있나?</b>
+          <ul>
+            <li>예 → y가 숫자? <a href="4-6_regression_seven.html">회귀 · 4-6</a> / 이름표? <a href="4-7_classification_eight.html">분류 · 4-7</a>
+              <ul><li>표 데이터에서 성능이 최우선 → <a href="4-10_ensemble_lineage.html">부스팅 계열 · 4-10</a></li></ul></li>
+            <li>아니요 → 묶고 싶다 <a href="4-8_unsupervised_nine.html">군집 · 4-8</a> / 보고 싶다·줄이고 싶다 <a href="4-8_unsupervised_nine.html#m3">차원 축소 · 4-8</a></li>
+            <li>정답 대신 보상이 있다 → <a href="4-9_rl_three.html">강화학습 · 4-9</a></li>
+          </ul></li>
+        <li style="margin-top:8px"><b>어느 길로 가든</b> → <a href="4-11_fair_rules.html">공정하게 재고 · 4-11</a> → 맞는 지표로 <a href="4-12_supervised_metrics.html">4-12</a> · <a href="4-13_unsupervised_metrics.html">4-13</a> · <a href="4-14_rl_metrics.html">4-14</a> → <a href="#m1">저울에 올린다 · 4-15</a></li>
+      </ul>
+      <p class="caption" style="margin-bottom:0">끝 칸의 모델은 정답이 아니라 <b>출발점</b>이다. 기준선부터 세우고, 후보를 같은 규칙으로 재서 고른다.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 03 다섯 줄 체크리스트 ═══════════ -->
+<section class="part" id="m3">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no ens">03</div>
+    <div class="en">Five-line checklist</div>
+    <h2>다섯 줄 체크리스트 — 가문 회합의 규칙</h2>
+    <p class="lin">3부 다섯 편이 한 줄씩 남긴 실전 체크</p>
+  </div>
+  <ol class="check5">
+    <li><span>시험 데이터는 마지막에 한 번만, 기준선과 함께</span><a href="4-11_fair_rules.html">4-11 가문의 규칙 →</a></li>
+    <li><span>쏠린 데이터에는 정밀도·재현율</span><a href="4-12_supervised_metrics.html">4-12 지도 가문의 장부 →</a></li>
+    <li><span>군집 수는 지표와 업무 의미로, 그림만 보고 정하지 않기</span><a href="4-13_unsupervised_metrics.html">4-13 비지도 가문의 장부 →</a></li>
+    <li><span>강화학습은 보상 말고 실제 목표도 재기</span><a href="4-14_rl_metrics.html">4-14 강화 가문의 장부 →</a></li>
+    <li><span>성능 · 비용 · 설명의 저울</span><a href="#m1">4-15 01 결승 저울 →</a></li>
+  </ol>
+
+  <div class="duel" id="d15" style="margin-top:28px"></div>
+  <h3 style="margin:26px 0 10px">✓ 확인 문제</h3>
+  <div class="quiz" data-quiz="q15"></div>
+</div>
+</section>
+
+<!-- ═══════════ 04 시즌 결산 ═══════════ -->
+<section class="part" id="m4">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no ens">04</div>
+    <div class="en">Season ledger</div>
+    <h2>시즌 결산 — 열다섯 구역의 장부</h2>
+    <p class="lin">담판 결과를 모은 세력도와 서른네 조직원의 한 장 조직도</p>
+  </div>
+  <div id="finalScore" aria-live="polite"></div>
+  <div class="card" id="recapCard" style="margin-top:14px">
+    <span class="tag">구역별 결산 (이 편은 장부를 연 뒤 채워진다)</span>
+    <div id="recap"></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <span class="tag">한 장 조직도 포스터 · 조직원 <b id="posterN">34</b>칸</span>
+    <p class="caption" style="margin-top:4px">칸을 누르면 그 조직원의 신상 파일이 있는 편으로 간다. <b>두 가문</b> 표시는 앙상블로 만든 지도학습 모델이라 두 가문에 몸담은 조직원이다.</p>
+    <div id="poster"></div>
+    <div class="ctrls" style="margin-top:12px"><button class="btn" id="printBtn">포스터 인쇄</button><span class="muted" style="font-size:13px">인쇄하면 포스터만 한 장으로 나온다</span></div>
+  </div>
+</div>
+</section>

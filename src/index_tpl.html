@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>인공지능 알고리즘 패밀리 조직도 — 목차</title>
+<meta name="description" content="머신러닝 알고리즘을 네 가문의 가계도로. 1부 가계도, 2부 조직원 명부, 3부 가문 회합. 대부 박사 앞에서 초파리 연구원과 Money-Robo가 구역마다 담판을 짓는다. 글 안상선.">
+<meta name="author" content="안상선">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@700;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0f0d0b; --deep:#0a0908; --panel:#1a1714; --line:#3a322a;
+  --text:#efe6d8; --muted:#a89a86;
+  --violet:#d4a54a; --pink:#d98aa0; --red:#d0533f; --cyan:#d4a54a; --amber:#d4a54a;
+  --sup:#7d9cc0; --uns:#8fb878; --rl:#d4a54a; --ens:#b56a8a;
+  --pix:"Nanum Myeongjo","IBM Plex Sans KR",serif; --lat:"Cinzel",Georgia,serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--night);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;height:auto}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--panel);padding:8px 12px;border:3px solid var(--cyan);z-index:10}
+.skip:focus{left:8px}
+p{word-break:keep-all;overflow-wrap:break-word}
+
+/* 히어로 */
+.hero{position:relative;background:var(--deep);border-bottom:4px solid var(--line)}
+.hero .scene{display:block;width:100%;max-height:74vh;object-fit:cover;object-position:50% 35%;image-rendering:pixelated;filter:sepia(.55) saturate(.8) contrast(1.05) brightness(.82)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,transparent 45%,rgba(0,0,0,.7) 100%)}
+.hero .box{z-index:1}
+.hero .box{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:min(980px,calc(100% - 32px));
+  background:rgba(15,13,11,.94);border:4px solid var(--violet);box-shadow:0 0 0 4px var(--deep),8px 8px 0 4px #050403;padding:18px 22px 18px 124px;min-height:136px}
+.hero .box .face{position:absolute;left:14px;bottom:14px;width:94px;height:94px;object-fit:cover;border:3px solid var(--violet)}
+.hero .who{font-family:var(--pix);color:var(--violet);font-size:15px}
+.hero h1{font-family:var(--pix);font-weight:400;font-size:clamp(22px,3.2vw,34px);line-height:1.3;margin:2px 0 8px;text-shadow:3px 3px 0 rgba(0,0,0,.6)}
+.hero .line{font-size:16px;margin:0;min-height:3.4em}
+.hero .line .cur{display:inline-block;width:.6em;height:1em;background:var(--violet);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero .go{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.btn{font-family:var(--pix);font-size:14px;text-decoration:none;color:var(--text);background:var(--panel);border:3px solid var(--line);padding:9px 14px;box-shadow:4px 4px 0 #050403;display:inline-block}
+.btn:hover{border-color:var(--cyan)}
+.btn.main{border-color:var(--pink);background:#2a1712}
+@media (max-width:760px){
+  .hero .scene{max-height:none;aspect-ratio:3/2}
+  .hero .box{position:relative;left:auto;bottom:auto;transform:none;width:auto;margin:-28px 12px 18px;padding:14px 14px 16px 88px}
+  .hero .box .face{width:64px;height:64px;left:10px;bottom:auto;top:14px}
+}
+
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.05;background-image:repeating-radial-gradient(circle at 17% 32%,#fff 0 1px,transparent 1px 3px)}
+section.part{padding:60px 0 22px;border-top:1px solid var(--line)}
+section.part:first-of-type{border-top:0}
+.part h2{font-weight:800}
+.part .eyebrow{font-family:var(--lat);font-size:12px;letter-spacing:.24em;color:var(--amber);text-transform:uppercase;margin:0 0 4px}
+.pcard .crest{image-rendering:pixelated;align-self:flex-start;margin-bottom:2px}
+.pcard .ph{margin:-16px -18px 8px;aspect-ratio:3/2;overflow:hidden;border-bottom:3px solid var(--line);position:relative}
+.pcard .ph img{display:block;width:100%;height:100%;object-fit:cover;filter:sepia(.45) saturate(.85) contrast(1.05) brightness(.85)}
+.pcard .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 50%,rgba(0,0,0,.6) 100%)}
+.hero .tagline{font-family:var(--lat);letter-spacing:.2em;font-size:12px;color:var(--amber);margin:0}
+.part h2{font-family:var(--pix);font-size:clamp(22px,3vw,30px);margin:0 0 6px;text-shadow:2px 2px 0 rgba(0,0,0,.6)}
+.part .lead{color:var(--muted);max-width:70ch;margin:0 0 26px}
+
+/* 세 부 */
+.parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pcard{background:var(--panel);border:3px solid var(--line);box-shadow:5px 5px 0 #050403;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.pcard .no{font-family:var(--pix);font-size:13px;color:var(--amber)}
+.pcard h3{font-family:var(--pix);font-weight:400;font-size:19px;margin:0}
+.pcard .q{font-size:15px;margin:0}
+.pcard .meta{font-size:13.5px;color:var(--muted);margin:0}
+.pcard .st{margin-top:auto;font-family:var(--pix);font-size:12.5px}
+.pcard .st.on{color:var(--uns)} .pcard .st.off{color:var(--muted)}
+@media (max-width:860px){.parts{grid-template-columns:1fr}}
+
+/* 등장인물 */
+.cast{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:end;border-bottom:4px dashed var(--line);padding-bottom:6px}
+.who-card{display:grid;gap:8px;justify-items:center;text-align:center}
+.who-card .pic{height:190px;display:flex;align-items:flex-end;justify-content:center}
+.who-card .pic img{max-height:190px;width:auto;filter:drop-shadow(4px 4px 0 #050403)}
+.who-card .pic img.sq{width:170px;height:170px;object-fit:contain}
+.who-card .tag{font-family:var(--pix);font-size:17px}
+.who-card .role{font-size:13px;color:var(--muted);margin:0}
+.who-card p{margin:2px 0 0;font-size:14.5px;max-width:30ch}
+.who-card.doc .tag{color:var(--violet)} .who-card.asst .tag{color:var(--pink)} .who-card.fly .tag{color:var(--red)} .who-card.robo .tag{color:var(--cyan)}
+.moods{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.moods button{background:var(--deep);border:2px solid var(--line);padding:2px;cursor:pointer;width:42px;height:42px}
+.moods button img{width:100%;height:100%;object-fit:contain}
+.moods button[aria-pressed="true"]{border-color:var(--cyan)}
+@media (max-width:860px){.cast{grid-template-columns:1fr 1fr}.who-card .pic{height:150px}.who-card .pic img{max-height:150px}.who-card .pic img.sq{width:120px;height:120px}}
+.npcs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}
+.npc{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;background:var(--panel);border:3px solid var(--line);padding:10px 12px}
+.npc canvas{image-rendering:pixelated;grid-row:span 2}
+.npc b{font-family:var(--pix);font-weight:400;font-size:14.5px}
+.npc span{font-size:13px;color:var(--muted);line-height:1.5}
+@media (max-width:860px){.npcs{grid-template-columns:1fr 1fr}}
+
+/* 구역 지도 */
+.leg{display:flex;flex-wrap:wrap;gap:16px;margin:0 0 18px;font-size:14px;color:var(--muted)}
+.leg span::before{content:"";display:inline-block;width:12px;height:12px;border:3px solid;margin-right:6px;vertical-align:-1px}
+.leg .l1::before{border-color:#efe6d8} .leg .l2::before{border-color:var(--sup)} .leg .l3::before{border-color:var(--uns)} .leg .l4::before{border-color:var(--rl)} .leg .l5::before{border-color:var(--ens)}
+.ptitle{font-family:var(--pix);font-size:18px;margin:30px 0 4px;color:var(--amber)}
+.ptitle small{font-family:var(--body);font-size:14px;color:var(--muted);margin-left:8px}
+.map{list-style:none;margin:0;padding:0;position:relative}
+.map::before{content:"";position:absolute;left:33px;top:10px;bottom:10px;border-left:4px dotted var(--line)}
+.stop{position:relative;display:grid;grid-template-columns:70px minmax(0,1fr) 130px;gap:18px;align-items:center;padding:12px 0}
+.stop .no{position:relative;z-index:1;width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:var(--panel);border:4px double var(--line);font-family:var(--lat);font-weight:700;font-size:16px;box-shadow:0 0 0 2px var(--deep),3px 3px 0 3px #050403}
+.stop.f0 .no{border-color:#efe6d8} .stop.f1 .no{border-color:var(--sup)} .stop.f2 .no{border-color:var(--uns)} .stop.f3 .no{border-color:var(--rl)} .stop.f4 .no{border-color:var(--ens)}
+.stop h3{font-family:var(--pix);font-weight:400;font-size:19px;margin:0 0 2px;line-height:1.35}
+.stop h3 a{text-decoration:none}
+.stop h3 a:hover{color:var(--cyan)}
+.stop .soon{font-family:var(--body);font-size:12.5px;color:var(--muted);border:1px solid var(--line);padding:0 8px;margin-left:8px;vertical-align:3px}
+.stop .easy{margin:0;font-size:16px}
+.stop .try{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.stop .duel{margin:4px 0 0;font-size:13.5px;color:var(--amber)}
+.stop.off h3,.stop.off .easy{color:var(--muted)}
+.stop .pic{justify-self:end;height:110px;width:130px;display:grid;place-items:end center}
+.stop .pic img{max-height:110px;width:auto;filter:drop-shadow(3px 3px 0 #050403)}
+.stop.off .pic img{opacity:.45;filter:grayscale(.6) drop-shadow(3px 3px 0 #050403)}
+@media (max-width:760px){.stop{grid-template-columns:58px minmax(0,1fr)}.stop .no{width:58px;height:54px;font-size:14px}.map::before{left:27px}.stop .pic{display:none}}
+
+/* 규칙·보는 법 */
+.how{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.how div{background:var(--panel);border:3px solid var(--line);padding:16px 18px}
+.how h3{font-family:var(--pix);font-weight:400;font-size:16px;margin:0 0 6px;color:var(--amber)}
+.how p{margin:0;font-size:15px}
+.notes ul{margin:0;padding-left:20px;color:var(--muted);font-size:14.5px;max-width:80ch}
+.notes li{margin:6px 0}
+.notes b{color:var(--text)}
+.notes .box{background:var(--panel);border:3px solid var(--line);padding:16px 18px}
+@media (max-width:760px){.how{grid-template-columns:1fr}}
+.grid35{display:grid;grid-template-columns:90px repeat(5,minmax(0,1fr));gap:6px;font-size:13px;margin-top:8px}
+.grid35 .h{color:var(--muted);font-size:12.5px;display:flex;align-items:center;justify-content:center;text-align:center}
+.grid35 .r{color:var(--muted);font-size:12.5px;display:flex;align-items:center}
+.grid35 a,.grid35 span.c{display:block;border:3px solid var(--line);background:var(--panel);padding:6px 8px;text-decoration:none;min-height:54px;line-height:1.35}
+.grid35 a:hover{border-color:var(--cyan)}
+.grid35 b{display:block;font-family:var(--pix);font-weight:400;font-size:12px;color:var(--amber)}
+.grid35 span.c{opacity:.5}
+@media (max-width:760px){.grid35{grid-template-columns:repeat(5,minmax(0,1fr))}.grid35 .r,.grid35 .corner{display:none}.grid35 .t{display:none}.grid35 .h{font-size:11px}}
+
+footer{margin-top:56px;padding:28px 0 48px;border-top:4px solid var(--line);background:var(--deep);color:var(--muted);font-size:14px}
+footer b{color:var(--text)}
+footer p{max-width:none}
+@media (prefers-reduced-motion:reduce){.hero .line .cur{animation:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#map">구역 지도로 바로 가기</a>
+
+<header class="hero">
+  <img class="scene" data-scene="sc_alley" alt="밤늦은 연구실. 박사가 화면을 가리키며 웃고, 조수와 작은 초파리 연구원이 곁을 지킨다">
+  <div class="box" role="group" aria-label="박사의 인사">
+    <img class="face" data-who="doc" data-mood="don" alt="">
+    <span class="who">대부 · 박사</span>
+    <h1>인공지능 알고리즘 패밀리 조직도</h1>
+    <p class="tagline">네 가문 · 서른네 조직원 · 한 명의 대부</p>
+    <p class="line" id="hello" aria-live="off">어서 오세요. 이 집안의 대부입니다. 이름만 수십 개인 머신러닝 알고리즘을 네 가문의 가계도 한 장으로 정리했죠. 열다섯 구역, 구역마다 초파리 연구원과 Money-Robo가 한 번씩 담판을 짓습니다. 승패는 제가 아니라 데이터가 정합니다.</p>
+    <div class="go"><a class="btn main" href="4-1_ml_family_map.html">1부 첫 편부터 시작하기</a><a class="btn" href="#map">구역 지도 보기</a></div>
+  </div>
+</header>
+
+<main>
+<section class="part" id="parts" aria-labelledby="parts-h">
+  <div class="wrap">
+    <p class="eyebrow">Three Chapters</p>
+    <h2 id="parts-h">3부작 — 가계도, 명부, 그리고 회합</h2>
+    <p class="lead">세 부는 같은 순서(전체 → 지도 → 비지도 → 강화 → 앙상블)로 간다. 같은 번호끼리 이어 보면 한 가문을 "가계도 → 명부 → 회합"(개념 → 기술 → 실전)으로 세 번 만난다.</p>
+    <div class="parts" id="partCards"></div>
+  </div>
+</section>
+
+<section class="part" id="cast" aria-labelledby="cast-h">
+  <div class="wrap">
+    <p class="eyebrow">The Family</p>
+    <h2 id="cast-h">집안 식구들</h2>
+    <p class="lead">주인공은 넷이다. 대부 박사가 판정하고 참모 조수가 장부를 쥔다. 두 세력의 얼굴인 초파리 연구원과 Money-Robo가 구역마다 담판을 짓는다. 얼굴 아래 버튼을 누르면 표정이 바뀐다.</p>
+    <div class="cast" id="castCards"></div>
+    <div class="npcs" id="npcCards" aria-label="NPC"></div>
+  </div>
+</section>
+
+<section class="part" id="map" aria-labelledby="map-h">
+  <div class="wrap">
+    <p class="eyebrow">Territory</p>
+    <h2 id="map-h">구역 지도 — 열다섯 구역을 차례로</h2>
+    <p class="lead">위에서부터 읽으면 이야기가 이어진다. 궁금한 편부터 골라 읽어도 괜찮다. 편마다 맨 위에 "먼저 읽으면 좋은 편"이 적혀 있다.</p>
+    <p class="leg"><span class="l1">집안 전체·종합</span><span class="l2">지도 가문</span><span class="l3">비지도 가문</span><span class="l4">강화 가문</span><span class="l5">앙상블 연합</span></p>
+    <div id="stops"></div>
+    <h3 class="ptitle" style="margin-top:36px">한눈에 보기 <small>가로는 가문, 세로는 부</small></h3>
+    <div class="grid35" id="grid35"></div>
+  </div>
+</section>
+
+<section class="part" id="rules" aria-labelledby="rules-h">
+  <div class="wrap">
+    <p class="eyebrow">House Rules</p>
+    <h2 id="rules-h">가문의 규칙 — 담판과 보는 법</h2>
+    <div class="how">
+      <div><h3>구역마다 한 번의 담판</h3><p>두 세력이 같은 문제에 서로 다른 방법을 고른다. "장부 열기"를 누르기 전에 누가 이길지 먼저 맞혀 보자. 결과는 페이지가 브라우저에서 직접 계산한다.</p></div>
+      <div><h3>승자는 정해져 있지 않다</h3><p>의심하는 쪽(초파리)이 늘 이기지도, 확신하는 쪽(Money-Robo)이 늘 이기지도 않는다. "조건 바꾸기" 버튼으로 데이터를 바꾸면 승패가 뒤집히기도 한다. 판정은 대부가 아니라 숫자가 내린다.</p></div>
+      <div><h3>세력도</h3><p>각 편 위쪽의 세력도는 지난 구역까지 누가 몇 구역을 가져갔는지에 이 편의 결과를 더해 보여 준다. 어느 편부터 열어도 맞게 보인다.</p></div>
+      <div><h3>직접 돌려 보기</h3><p>편마다 끝에 Colab 코드, AI 응용 프롬프트, 용어 정리, 비유 모음, 레퍼런스, 교육자 TIP이 있다. 코드는 그 편의 담판을 그대로 재현한다.</p></div>
+    </div>
+  </div>
+</section>
+{{NOTES}}
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>인공지능 알고리즘 패밀리 조직도</b> — 글 안상선 ((주)M-Robo 대표).</p>
+  </div>
+</footer>
+
+<script>
+var SPR={{SPR}};
+{{CORE}}
+/* ══ 목차 데이터 ══ */
+var PARTS3=[
+ {no:'1부',t:'가계도 (숲 보기)',q:'어떤 가문이 있고, 왜 갈라졌나?',m:'개념 · 네 가문과 여섯 파 · 약 20분',eps:[0,4],c:'sup',sc:'sc_family',alt:'가계도 액자 앞에 선 집안 식구 넷의 단체 사진'},
+ {no:'2부',t:'조직원 명부 (나무 보기)',q:'조직원 하나하나의 특기는 무엇인가?',m:'기술 · 신상 파일 34장 · 약 22분',eps:[5,9],c:'uns',sc:'sc_registry',alt:'서랍장 가득한 서재에서 조수가 사다리에 올라 신상 파일을 꺼내고, Money-Robo가 가리킨다'},
+ {no:'3부',t:'가문 회합 (규칙과 담판)',q:'어떻게 공정하게 겨루고, 무엇으로 재고, 어떻게 고르나?',m:'평가와 선택 · 장부와 규칙 · 약 20분',eps:[10,14],c:'rl',sc:'sc_meeting',alt:'긴 회합 테이블 상석에 정장 박사, 양옆에 초파리 연구원과 Money-Robo, 뒤에 장부 든 조수'}];
+var INFO={
+ '4-1':['f0','알고리즘 40개를 질문 하나로 정리한다. 무엇을 보고 배우나?','신입 카드 여덟 장을 가문에 배정해 본다.','같은 매출 데이터, 다른 질문','fly','point'],
+ '4-2':['f1','정답지를 보고 규칙을 찾는다. y가 숫자면 회귀, 이름표면 분류.','트리 깊이를 바꾸며 외운 것과 아는 것을 가린다.','트리를 얼마나 깊게 키울까','doc','board'],
+ '4-3':['f2','정답 없이 비슷한 것끼리 묶고, 축을 줄인다.','K-평균을 한 단계씩 넘기며 무리가 생기는 걸 본다.','정답 없이 고객 무리 찾기','robo','count'],
+ '4-4':['f3','정답 대신 보상. 해 보고 배운다.','보상 금고를 직접 열며 탐험과 활용을 저울질한다.','잘 나오는 금고만 열까','fly','type'],
+ '4-5':['f4','모델 여럿을 묶는다. 배깅은 흔들림을, 부스팅은 치우침을 줄인다.','위원 수와 "같은 실수"를 바꿔 다수결이 언제 강해지는지 본다.','위원 한 명 vs 스물다섯 명','robo','stack'],
+ '4-6':['f1','직선 하나에서 나무 숲까지, 숫자를 맞히는 일곱 알고리즘.','같은 데이터에 회귀파 일곱을 차례로 세운다.','휜 데이터 회귀','asst','smile'],
+ '4-7':['f1','경계를 긋는 여덟 가지 방법.','데이터 모양 세 가지 × 분류기 여덟 개.','동심원 데이터 분류','doc','board'],
+ '4-8':['f2','묶는 다섯, 줄이는 넷.','초승달 데이터에서 군집파 다섯이 담판을 짓는다.','초승달 데이터 군집','fly','clip'],
+ '4-9':['f3','표에서 신경망으로, 값에서 정책으로. Q-Learning · DQN · PPO.','격자 미로에서 Q 값이 퍼져 나가는 걸 본다.','미로 크기와 Q 표','robo','smile'],
+ '4-10':['f4','배깅과 부스팅의 나무 여섯 그루.','부스팅 단계를 재생하고 단일 트리와 숲을 비교한다.','표 데이터 앙상블','robo','coin'],
+ '4-11':['f0','금고 속 장부는 마지막에 한 번만. 기준선과 데이터 누수.','올바른 절차와 누수 절차의 점수를 견준다.','규칙을 어긴 자는 실격','doc','verdict'],
+ '4-12':['f1','정확도 99%가 꼴찌일 수 있다. 정밀도와 재현율.','문턱을 움직이며 혼동 행렬이 바뀌는 걸 본다.','사기 거래 탐지 지표','asst','firm'],
+ '4-13':['f2','정답 없이 재는 법, 그리고 그림의 함정.','엘보와 실루엣으로 무리 수를 고른다.','군집 수 고르기','fly','coffee'],
+ '4-14':['f3','보상이 곧 시험 문제다. 보상 해킹.','보상을 세 가지로 바꿔 청소봇을 학습시킨다.','보상 설계','asst','shock'],
+ '4-15':['f0','성능 · 비용 · 설명의 저울, 그리고 무엇을 고를까.','알고리즘 선택 지도와 세력도 결산.','마지막 담판: 어떤 모델을 배포할까','doc','don']};
+var CASTC=[
+ {k:'doc',n:'대부 · 박사',role:'네 가문의 수장 · 담판의 심판',p:'머리가 큰 꼬마 체형의 자신만만한 과학자이자 이 집안의 대부. 편마다 핵심 한 줄을 말하고, 판정은 짧고 무겁게, 데이터대로 내린다.',m:['don','verdict','scale','magic','front','judge','board'],sq:1},
+ {k:'asst',n:'참모 · 조수',role:'장부를 쥔 사람',p:'실제로 일을 다 하는 참모. 담판 결과 숫자를 발표하고 장부와 세력도를 고친다.',m:['ledger','board','smile','spark','firm','shock','sigh','cry']},
+ {k:'fly',n:'초파리 연구원',role:'의심하는 간부 · 한 세력의 얼굴',p:'작지만 날카로운 젊은 간부. 단순한 모델, 기준선, 처음 보는 장부로 확인하기를 고른다.',m:['fedora','tip','magnify','clip','point','arms','type','coffee','cry']},
+ {k:'robo',n:'Money-Robo',role:'장부 든 회계 · 다른 세력의 얼굴',p:'돈과 숫자를 사랑하는 회계 담당 로봇. 크고 많고 비싼 쪽에 건다. 지면 "손절"하고 금방 털고 일어난다.',m:['tux','calc','dq','coin','happy','chart','stack','meh','sigh','wow']}];
+var NPCS=[['ant','나르미','심부름꾼. 데이터 카드를 나르는 개미들 · 4-1, 4-3, 4-11'],['owl','봉인관','금고지기. 시험 장부를 봉인해 지키는 부엉이 · 4-2, 4-11, 4-15'],['sweep_top','쓱싹이','말단 조직원. 구역을 돌며 보상을 모으는 청소봇 · 4-4, 4-9, 4-14'],['g2','손님들','가게 손님. 고객 데이터 한 건 · 4-3, 4-12, 4-15']];
+
+/* 세 부 카드 */
+$('partCards').innerHTML=PARTS3.map(function(p){var ready=EPISODES.slice(p.eps[0],p.eps[1]+1).filter(function(e){return e.ready}).length;
+  return '<div class="pcard" data-c="'+p.c+'"><div class="ph"><img src="'+SPR[p.sc]+'" alt="'+p.alt+'" loading="lazy"></div><span class="no">'+p.no+' · '+EPISODES[p.eps[0]].n+' ~ '+EPISODES[p.eps[1]].n+'</span><h3>'+p.t+'</h3><p class="q">'+p.q+'</p><p class="meta">'+p.m+'</p><span class="st '+(ready?'on':'off')+'">'+(ready?'공개 '+ready+'/5편':'준비 중')+'</span></div>';}).join('');
+/* 등장인물 */
+$('castCards').innerHTML=CASTC.map(function(c){return '<div class="who-card '+c.k+'"><div class="pic"><img id="ci-'+c.k+'" '+(c.sq?'class="sq" ':'')+'src="'+sprite(c.k,c.m[0])+'" alt="'+c.n+'"></div><div><span class="tag">'+c.n+'</span><p class="role">'+c.role+'</p><p>'+c.p+'</p>'+
+  '<div class="moods" role="group" aria-label="'+c.n+' 표정 바꾸기">'+c.m.map(function(m,i){return '<button type="button" aria-pressed="'+(i===0)+'" data-k="'+c.k+'" data-m="'+m+'"><img src="'+sprite(c.k,m)+'" alt="'+m+'"></button>';}).join('')+'</div></div></div>';}).join('');
+document.querySelectorAll('.moods button').forEach(function(b){b.addEventListener('click',function(){b.parentNode.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');$('ci-'+b.dataset.k).src=sprite(b.dataset.k,b.dataset.m);});});
+document.querySelectorAll('.pcard').forEach(function(d){d.insertBefore(NPC.crest(d.dataset.c,3,'문장'),d.querySelector('.no'));});
+NPCS.forEach(function(n){var d=document.createElement('div');d.className='npc';d.appendChild(NPC.el(n[0],n[0]==='ant'?4:3,n[1]));d.insertAdjacentHTML('beforeend','<b>'+n[1]+'</b><span>'+n[2]+'</span>');$('npcCards').appendChild(d);});
+/* 구역 지도 */
+$('stops').innerHTML=PARTS3.map(function(p){return '<h3 class="ptitle">'+p.no+' · '+p.t+'<small>'+p.q+'</small></h3><ol class="map">'+EPISODES.slice(p.eps[0],p.eps[1]+1).map(function(e){var I=INFO[e.n];
+  return '<li class="stop '+I[0]+(e.ready?'':' off')+'"><span class="no">'+e.n+'</span><div><h3>'+(e.ready?'<a href="'+e.f+'">'+e.t+'</a>':e.t+'<span class="soon">준비 중</span>')+'</h3><p class="easy">'+I[1]+'</p><p class="try">'+I[2]+'</p><p class="duel">담판 · '+I[3]+'</p></div><span class="pic"><img src="'+sprite(I[4],I[5])+'" alt="" loading="lazy"></span></li>';}).join('')+'</ol>';}).join('');
+/* 3×5 격자 */
+(function(){var h='<div class="corner"></div>'+['① 집안 / 회귀파','② 지도 / 분류파','③ 비지도','④ 강화','⑤ 앙상블 / 결산'].map(function(x){return '<div class="h">'+x+'</div>';}).join('');
+  for(var p=0;p<3;p++){h+='<div class="r">'+PARTS3[p].no+'</div>';for(var c=0;c<5;c++){var e=EPISODES[p*5+c];h+=e.ready?'<a href="'+e.f+'"><b>'+e.n+'</b><span class="t">'+e.t+'</span></a>':'<span class="c"><b>'+e.n+'</b><span class="t">'+e.t+'</span></span>';}}
+  $('grid35').innerHTML=h;})();
+hydrate(document);
+/* 대화창 글자 찍기 */
+(function(){var el=$('hello'),full=el.textContent;if(!REDUCE){var i=0;el.setAttribute('aria-label',full);el.textContent='';var cur=document.createElement('span');cur.className='cur';
+  var t=setInterval(function(){i+=2;el.textContent=full.slice(0,i);el.appendChild(cur);if(i>=full.length)clearInterval(t);},28);}})();
+</script>
+</body>
+</html>

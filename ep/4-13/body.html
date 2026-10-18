@@ -1,0 +1,138 @@
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="series" id="series" aria-label="알고리즘 패밀리 시리즈 목록"></div>
+    <div class="kicker">인공지능 알고리즘 패밀리 조직도 · 4-13<span class="fam fam-uns">3부 가문 회합 · 비지도 가문</span></div>
+    <canvas class="stagecv" id="heroCv" width="1100" height="340" role="img" aria-label="거울이 늘어선 방. 가운데 거울 세 개에 같은 고객 240명이 비치는데, 거울마다 점이 모인 덩어리 수가 다르게 보인다. 왼쪽에 돋보기를 든 초파리 연구원, 오른쪽에 계산기를 든 Money-Robo가 서 있다"></canvas>
+    <div class="hero-grid">
+      <div>
+        <h1>비지도 가문의 장부 — 정답 없이 재는 법, 그리고 그림의 함정</h1>
+        <p class="lede" style="margin-top:14px">비지도학습에는 맞혀 볼 정답이 없다. 그래도 장부는 써야 한다. 정답 대신 묻는 질문은 하나다. <b>무리 안은 촘촘하고, 무리 사이는 먼가?</b></p>
+        <p class="lede">이 질문을 숫자로 바꾼 것이 <b>엘보</b>와 <b>실루엣</b>이다. 그리고 하나 더. t-SNE 같은 2차원 그림은 보기에는 또렷하지만 숫자가 아니다. 같은 데이터도 설정 하나로 무리가 넷으로도, 여섯으로도 보인다.</p>
+        <div class="chips" aria-label="10분 핵심 경로"><span class="muted">10분 핵심 경로</span><a href="#m2">02 실루엣</a><span class="arr">→</span><a href="#m3">03 t-SNE의 함정</a><span class="arr">→</span><a href="#d13">담판</a></div>
+      </div>
+      <div>
+        <div class="sizebox">
+          <h3>이 편의 장부</h3>
+          <div class="sizegrid">
+            <div class="nn"><b>240</b><span>고객 수 (점 하나가 고객 한 명)</span></div>
+            <div class="nn"><b>8</b><span>고객마다 특징 수 (8차원)</span></div>
+            <div class="nn"><b>2</b><span>정답 없이 재는 지표 · 엘보, 실루엣</span></div>
+            <div class="nn"><b>?</b><span>숨긴 무리 수 · 담판이 끝나면 금고를 연다</span></div>
+          </div>
+          <p class="foot">숨긴 무리 정보는 학습과 지표 계산에 쓰지 않는다. 마지막에 누가 맞았는지 채점할 때만 쓴다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="cast" aria-label="등장인물">
+      <div class="say doc"><img data-who="doc" data-mood="don" alt="" aria-hidden="true"><div class="bub"><span class="who">대부 박사</span>비지도 가문의 장부를 엽니다. 정답이 없으니 무엇으로 재는지가 전부예요. 오늘은 숫자와 그림이 서로 다른 말을 합니다.</div></div>
+      <div class="say fly"><img data-who="fly" data-mood="magnify" alt="" aria-hidden="true"><div class="bub"><span class="who">초파리 연구원 · 의심하는 간부</span>복잡한 계산보다 내 눈이 빠르지. 그림을 보면 무리가 한눈에 들어와.</div></div>
+      <div class="say robo"><img data-who="robo" data-mood="calc" alt="" aria-hidden="true"><div class="bub"><span class="who">Money-Robo · 장부 든 회계</span>그림은 기분이고 숫자는 장부야. k마다 점수를 매겨 보자고.</div></div>
+    </div>
+    <aside class="prereq" aria-label="먼저 읽으면 좋은 편">
+      <b>먼저 읽으면 좋은 편</b>
+      <span><a href="4-11_fair_rules.html">4-11 가문의 규칙</a> — 금고 속 장부는 마지막에 한 번만 연다</span>
+      <span><a href="4-3_unsupervised.html">4-3 비지도 가문</a> — 정답 없이 배우는 법, K-평균의 기본</span>
+      <span>같은 세로줄: 가계도 → <a href="4-3_unsupervised.html">4-3 비지도 가문</a> · 명부 → <a href="4-8_unsupervised_nine.html">4-8 비지도 아홉</a></span>
+    </aside>
+  </div>
+</header>
+
+<!-- ═══════════ 01 엘보 ═══════════ -->
+<section class="part" id="m1">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no uns">01</div>
+    <div class="en">The elbow</div>
+    <h2>엘보 — 무리를 하나 더 늘릴 값어치가 있나</h2>
+    <p class="lin">무리 안 오차 제곱합이 꺾이는 곳을 찾는다</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>K-평균은 점마다 가장 가까운 무리 중심에 배정한다. 점과 자기 중심 사이 거리를 제곱해 모두 더한 값이 <b>무리 안 오차 제곱합</b>이다. 작을수록 무리가 촘촘하다.</p>
+      <p>문제는 이 값이 무리 수 k를 늘리면 <b>늘 줄어든다</b>는 것이다. 고객 240명을 240무리로 나누면 0이 된다. 그래서 가장 작은 값을 고르지 않고, 줄어드는 폭이 갑자기 작아지는 <b>꺾이는 점</b>(팔꿈치)을 고른다.</p>
+      <p style="margin:0">오른쪽 곡선에서 점선은 첫 점과 끝 점을 잇는 직선이다. 이 직선에서 가장 멀리 떨어진 k가 꺾이는 점이다. 슬라이더로 k를 바꾸면 아래 그림의 무리 색도 바뀐다.</p>
+    </div>
+    <div class="card">
+      <span class="tag">k별 무리 안 오차 제곱합</span>
+      <div class="cwrap"><canvas class="fig" id="elbCv" aria-label="무리 수 1부터 10까지 무리 안 오차 제곱합이 줄어드는 곡선. 4에서 크게 꺾인다"></canvas></div>
+      <label for="elbSl" style="display:block;font-size:14px;color:var(--muted);margin-top:8px">무리 수 k: <b id="elbVal" class="num" style="color:var(--text)">4</b></label>
+      <input type="range" id="elbSl" min="1" max="10" step="1" value="4">
+      <div class="stat" id="elbStat" style="margin-top:10px"></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <span class="tag">고른 k로 나눈 고객 (8차원을 PCA로 눌러 본 그림)</span>
+    <div class="cwrap"><canvas class="fig" id="elbPca" aria-label="고객 240명을 PCA로 2차원에 눌러 그린 점. 고른 k로 나눈 무리마다 색이 다르다"></canvas></div>
+    <p class="caption">8차원을 2차원으로 누르면 일부 무리가 겹쳐 보인다. 거리는 원래 8차원에서 잰다.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════ 02 실루엣 ═══════════ -->
+<section class="part" id="m2">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no uns">02</div>
+    <div class="en">Silhouette</div>
+    <h2>실루엣 — 내 무리와 가깝고, 옆 무리와 먼가</h2>
+    <p class="lin">점마다 −1 ~ 1의 막대 하나</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">계산 방법</span>
+      <p>고객 한 명마다 두 거리를 잰다.</p>
+      <ul style="margin:0 0 10px;padding-left:20px">
+        <li><b>a</b> = 같은 무리 고객들까지의 평균 거리 (작을수록 좋다)</li>
+        <li><b>b</b> = 가장 가까운 다른 무리 고객들까지의 평균 거리 (클수록 좋다)</li>
+      </ul>
+      <p>실루엣 값은 <b>(b − a) ÷ (a와 b 중 큰 값)</b>이다. 1에 가까우면 제자리에 잘 들어갔고, 0 근처면 경계에 걸쳤고, <b>음수</b>면 옆 무리가 더 가깝다는 뜻이다.</p>
+      <p>모든 고객의 실루엣 값을 평균한 것이 <b>평균 실루엣 점수</b>다. k를 2부터 10까지 바꿔 가며 이 점수가 가장 높은 k를 고른다.</p>
+      <p style="margin:0">슬라이더를 4보다 크게 움직여 보자. 한 무리를 억지로 쪼개면 빨간 음수 막대가 나타난다.</p>
+    </div>
+    <div class="card">
+      <span class="tag">실루엣 그림 (무리별로 정렬)</span>
+      <div class="cwrap"><canvas class="fig" id="silCv" aria-label="점 240개의 실루엣 값을 무리별로 묶어 긴 것부터 늘어놓은 가로 막대 그림. 점선은 평균"></canvas></div>
+      <label for="silSl" style="display:block;font-size:14px;color:var(--muted);margin-top:8px">무리 수 k: <b id="silVal" class="num" style="color:var(--text)">4</b></label>
+      <input type="range" id="silSl" min="2" max="8" step="1" value="4">
+      <div class="cwrap" style="margin-top:8px"><canvas class="fig" id="silBar" aria-label="k가 2부터 10일 때 평균 실루엣 점수 막대. 가장 높은 막대가 금색이다"></canvas></div>
+    </div>
+  </div>
+  <div class="stat" id="silStat" style="margin-top:14px"></div>
+  <p class="caption" id="silCap" aria-live="polite"></p>
+</div>
+</section>
+
+<!-- ═══════════ 03 t-SNE의 함정 ═══════════ -->
+<section class="part" id="m3">
+<div class="wrap">
+  <div class="part-head">
+    <div class="part-no uns">03</div>
+    <div class="en">The t-SNE trap</div>
+    <h2>t-SNE의 함정 — 거울마다 무리 수가 다르다</h2>
+    <p class="lin">같은 8차원 고객, 설정 하나만 바꾼 지도 네 장</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag">이야기</span>
+      <p>t-SNE는 8차원의 고객을 2차원 지도에 펼친다. 점마다 가까운 이웃이 지도에서도 가깝게 남도록 배치한다(4-8). 그래서 무리가 아주 또렷하게 보인다.</p>
+      <p>그런데 "이웃을 몇 명쯤 눈여겨볼지"를 정하는 설정, <b>이웃 수(perplexity)</b>를 바꾸면 그림이 달라진다. 이웃을 적게 보면 무리 안의 작은 덩어리까지 떨어져 나온다. 덩어리 크기와 덩어리 사이 간격도 원래 거리를 그대로 옮긴 것이 아니다.</p>
+      <div id="mouseHost"></div>
+      <p style="margin:0">아래 칸의 "그림에서 눈으로 센 덩어리"는 지도에서 화면 폭의 6%보다 가까운 점끼리 이어 센 것이다(DBSCAN). 사람이 그림을 보고 세는 것을 흉내 냈다.</p>
+    </div>
+    <div class="card">
+      <span class="tag">t-SNE 지도 고르기</span>
+      <div class="pills" id="tsPick" role="group" aria-label="t-SNE 이웃 수 고르기"><button data-v="0" aria-pressed="false">이웃 3</button><button data-v="1" aria-pressed="true">이웃 8</button><button data-v="2" aria-pressed="false">이웃 30</button><button data-v="3" aria-pressed="false">이웃 80</button></div>
+      <div class="cwrap" style="margin-top:10px"><canvas class="fig" id="tsCv" aria-label="고른 이웃 수로 그린 t-SNE 2차원 지도. 점 240개"></canvas></div>
+      <div class="ctrls"><button class="btn" id="tsTruth" aria-pressed="false">숨긴 정답 색 보기</button></div>
+    </div>
+  </div>
+  <div class="stat" id="tsStat" style="margin-top:14px"></div>
+  <p class="caption" id="tsCap" aria-live="polite"></p>
+  <p class="caption" style="margin-top:6px">지도 네 장은 scikit-learn <code>TSNE</code>로 미리 계산해 넣었다: 이웃 수(perplexity) 3·8·30·80, init="pca", random_state=0, max_iter=1000. 고객 데이터는 같은 8차원 점이고, 엘보·실루엣·덩어리 세기는 이 페이지가 브라우저에서 직접 계산한다.</p>
+
+  <div class="duel" id="d13"></div>
+  <h3 style="margin:26px 0 10px">✓ 확인 문제</h3>
+  <div class="quiz" data-quiz="q13"></div>
+</div>
+</section>
