@@ -153,7 +153,7 @@ h1,h2,h3,.pcard h3,.stop h3,.who-card .tag,.npc b,.npc span,.who-card p,.grid35 
 @media (max-width:860px){.npcs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.npcs{grid-template-columns:1fr}}
 @media (max-width:760px){.grid35 .h{font-size:10px;overflow-wrap:anywhere;hyphens:auto}.grid35 .h .lf{display:none}}
-:root{--font:"IBM Plex Sans",system-ui,sans-serif;--serif:"Noto Serif",Georgia,serif;--pix:"Cinzel","Noto Serif",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif}.langsel{margin-left:8px;background:var(--panel);color:var(--text);border:1px solid var(--rule,var(--line));border-radius:999px;padding:5px 10px;font:inherit;font-size:13px}.langsel{margin-left:8px;background:var(--panel);color:var(--text);border:3px solid var(--line);padding:6px 10px;font:inherit;font-size:14px}</style>
+:root{--font:"IBM Plex Sans",system-ui,sans-serif;--serif:"Noto Serif",Georgia,serif;--pix:"Cinzel","Noto Serif",Georgia,serif;--body:"IBM Plex Sans",system-ui,sans-serif}.langsel{margin-left:8px;background:var(--panel);color:var(--text);border:1px solid var(--rule,var(--line));border-radius:999px;padding:5px 10px;font:inherit;font-size:13px}.langsel{margin-left:8px;background:var(--panel);color:var(--text);border:3px solid var(--line);padding:6px 10px;font:inherit;font-size:14px}.langbar{position:fixed;top:12px;right:12px;z-index:50;display:flex;align-items:center;gap:6px;padding:6px 8px 6px 12px;background:rgba(10,8,6,.88);border:2px solid #d9a441;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.45)}.langbar span{font-size:18px;line-height:1}.langbar .langsel{margin:0;border:0;border-radius:999px;background:transparent;color:#f3e6c8;font-size:15px;font-weight:700;padding:4px 6px;cursor:pointer}.langbar .langsel option{color:#111;background:#fff}</style>
 </head>
 <body>
 <a class="skip" href="#map">Перейти к карте районов</a>
@@ -246,7 +246,9 @@ function langGo(to){try{localStorage.setItem('afam-lang',to);}catch(e){}if(to!==
   var saved=null;try{saved=localStorage.getItem('afam-lang');}catch(e){}
   if(!saved&&!q&&location.protocol!=='file:'){var nav=(navigator.languages||[navigator.language||'']).map(function(s){return (s||'').slice(0,2).toLowerCase()});
     for(var i=0;i<nav.length;i++){if(ok.indexOf(nav[i])>=0){try{localStorage.setItem('afam-lang',nav[i]);}catch(e){}if(nav[i]!==LANG){location.replace(langHref(nav[i]));return;}break;}}}
-  function mount(){var host=document.querySelector('nav.top .wrap')||document.querySelector('.hero .go')||document.body;if(!host||document.getElementById('langSel'))return;
+  function mount(){if(document.getElementById('langSel'))return;var host=document.querySelector('nav.top .wrap');
+    /* index page has no top bar: pin a clearly visible globe switcher to the top-right corner */
+    if(!host){host=document.createElement('div');host.className='langbar';var g=document.createElement('span');g.textContent='🌐';g.setAttribute('aria-hidden','true');host.appendChild(g);document.body.appendChild(host);}
     var s=document.createElement('select');s.id='langSel';s.className='langsel';s.setAttribute('aria-label','Language');
     LANGS.forEach(function(l){var o=document.createElement('option');o.value=l[0];o.textContent=l[1];if(l[0]===LANG)o.selected=true;s.appendChild(o);});
     s.addEventListener('change',function(){langGo(s.value);});host.appendChild(s);}

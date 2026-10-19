@@ -766,7 +766,9 @@ function langGo(to){try{localStorage.setItem('afam-lang',to);}catch(e){}if(to!==
   var saved=null;try{saved=localStorage.getItem('afam-lang');}catch(e){}
   if(!saved&&!q&&location.protocol!=='file:'){var nav=(navigator.languages||[navigator.language||'']).map(function(s){return (s||'').slice(0,2).toLowerCase()});
     for(var i=0;i<nav.length;i++){if(ok.indexOf(nav[i])>=0){try{localStorage.setItem('afam-lang',nav[i]);}catch(e){}if(nav[i]!==LANG){location.replace(langHref(nav[i]));return;}break;}}}
-  function mount(){var host=document.querySelector('nav.top .wrap')||document.querySelector('.hero .go')||document.body;if(!host||document.getElementById('langSel'))return;
+  function mount(){if(document.getElementById('langSel'))return;var host=document.querySelector('nav.top .wrap');
+    /* index page has no top bar: pin a clearly visible globe switcher to the top-right corner */
+    if(!host){host=document.createElement('div');host.className='langbar';var g=document.createElement('span');g.textContent='🌐';g.setAttribute('aria-hidden','true');host.appendChild(g);document.body.appendChild(host);}
     var s=document.createElement('select');s.id='langSel';s.className='langsel';s.setAttribute('aria-label','Language');
     LANGS.forEach(function(l){var o=document.createElement('option');o.value=l[0];o.textContent=l[1];if(l[0]===LANG)o.selected=true;s.appendChild(o);});
     s.addEventListener('change',function(){langGo(s.value);});host.appendChild(s);}
