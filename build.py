@@ -17,7 +17,7 @@ NOTES_COMMON = [
     ('바탕 자료', '조직도의 구조는 <i>Machine Learning Algorithm Family Tree</i> 인포그래픽(Pooja Pawar)을 참고했다. 이미지를 옮기지 않고 가문·파·알고리즘의 관계만 참고해 새로 그렸다.'),
     ('그림', '등장인물과 장면은 이 시리즈를 위해 그린 그림이다. NPC와 가문 문장은 이 페이지가 픽셀로 직접 그린다.'),
     ('"대부" 컨셉', '범죄 가문 장르의 일반적인 분위기만 빌렸다. 특정 영화의 인물·대사·로고·음악을 쓰지 않았고, 폭력을 다루지 않는다. "가문"은 알고리즘 무리를 부르는 은유다.'),
-    ('등장인물', 'Money-Robo는 저자가 운영하는 서비스의 마스코트 캐릭터다. 박사·조수·초파리 연구원과 NPC는 실존 인물을 나타내지 않는다. 대사 속 돈·투자 표현은 말버릇일 뿐 투자 권유가 아니다.'),
+    ('등장인물', '주판봇은 저자가 만든 연구실 캐릭터다. 박사·조수·초파리 연구원과 NPC는 실존 인물을 나타내지 않는다. 대사 속 돈·투자 표현은 말버릇일 뿐 투자 권유가 아니다.'),
 ]
 
 
@@ -163,7 +163,7 @@ def build(ep):
   <div class="wrap">
     <div class="toc">{toc}</div>
     <div class="score" id="score" aria-live="polite" title="세력도: 지난 구역까지 차지한 수에 이 구역의 담판 결과를 더한다">
-      <span class="lab">세력도</span><img data-who="fly" data-mood="clip" alt="초파리 연구원"><span class="f" id="sF">0</span>:<span class="r" id="sR">0</span><img data-who="robo" data-mood="smile" alt="Money-Robo"><span class="d">· 무 <span id="sD">0</span></span> <span class="prev" id="sP"></span>
+      <span class="lab">세력도</span><img data-who="fly" data-mood="clip" alt="초파리 연구원"><span class="f" id="sF">0</span>:<span class="r" id="sR">0</span><img data-who="robo" data-mood="smile" alt="주판봇"><span class="d">· 무 <span id="sD">0</span></span> <span class="prev" id="sP"></span>
     </div>
   </div>
 </nav>

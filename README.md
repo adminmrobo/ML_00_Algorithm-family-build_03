@@ -1,6 +1,6 @@
 # 인공지능 알고리즘 패밀리 조직도 — 3부 · 가문 회합
 
-이름만 수십 개인 머신러닝 알고리즘을 네 가문의 가계도로 정리하고, 버튼을 눌러 직접 돌려 보며 배우는 교육용 웹 페이지입니다. 대부 박사 앞에서 초파리 연구원과 Money-Robo가 구역마다 담판을 짓고, 승패는 페이지가 브라우저에서 직접 계산한 데이터가 정합니다.
+이름만 수십 개인 머신러닝 알고리즘을 네 가문의 가계도로 정리하고, 버튼을 눌러 직접 돌려 보며 배우는 교육용 웹 페이지입니다. 대부 박사 앞에서 초파리 연구원과 주판봇이 구역마다 담판을 짓고, 승패는 페이지가 브라우저에서 직접 계산한 데이터가 정합니다.
 
 - 글: 안상선 ((주)M-Robo 대표)
 - 라이선스: CC BY-NC 4.0 (비상업적 이용, 출처 표기 필수) — [LICENSE.md](LICENSE.md)
@@ -35,7 +35,7 @@
 
 # The AI Algorithm Family Tree — Part 3 · The Family Council
 
-An educational website that organizes dozens of machine-learning algorithms into one family tree of four houses, where you learn by pressing buttons and running things yourself. Before the Don (the Doctor), the Fruit Fly Researcher and Money-Robo settle a showdown in every district, and the winner is decided by data the page computes in your browser.
+An educational website that organizes dozens of machine-learning algorithms into one family tree of four houses, where you learn by pressing buttons and running things yourself. Before the Don (the Doctor), the Fruit Fly Researcher and AbaBot settle a showdown in every district, and the winner is decided by data the page computes in your browser.
 
 - Author: Ahn Sangsun (CEO, M-Robo Co., Ltd.)
 - License: CC BY-NC 4.0 (non-commercial use, attribution required) — [LICENSE.md](LICENSE.md)
@@ -57,7 +57,7 @@ Other parts: [Part 1 · The Family Tree](https://adminmrobo.github.io/ML_00_Algo
 
 # 人工智能算法家族组织图 — 第3部 · 家族会议
 
-把几十种机器学习算法整理成四个家族的家谱，只需点击按钮、亲手运行就能学习的教育网站。在教父博士面前，果蝇研究员与 Money-Robo 在每块地盘上摊牌，胜负由页面在浏览器中直接计算的数据决定。
+把几十种机器学习算法整理成四个家族的家谱，只需点击按钮、亲手运行就能学习的教育网站。在教父博士面前，果蝇研究员与 算盘宝 在每块地盘上摊牌，胜负由页面在浏览器中直接计算的数据决定。
 
 - 作者：Ahn Sangsun（M-Robo 公司代表）
 - 许可：CC BY-NC 4.0（非商业使用，须注明出处） — [LICENSE.md](LICENSE.md)
@@ -79,7 +79,7 @@ Other parts: [Part 1 · The Family Tree](https://adminmrobo.github.io/ML_00_Algo
 
 # AIアルゴリズム・ファミリー組織図 — 第3部・一家の会合
 
-名前だけでも数十あるAIアルゴリズムを四つの一家の家系図にまとめ、ボタンを押して自分で動かしながら学ぶ教育用ウェブページです。ドン・博士の前でショウジョウバエ研究員とMoney-Roboが区域ごとに談判し、勝敗はページがブラウザで直接計算したデータが決めます。
+名前だけでも数十あるAIアルゴリズムを四つの一家の家系図にまとめ、ボタンを押して自分で動かしながら学ぶ教育用ウェブページです。ドン・博士の前でショウジョウバエ研究員とアバボットが区域ごとに談判し、勝敗はページがブラウザで直接計算したデータが決めます。
 
 - 著者：アン・サンソン（株式会社 M-Robo 代表）
 - ライセンス：CC BY-NC 4.0（非営利利用、出典表示必須） — [LICENSE.md](LICENSE.md)
@@ -101,7 +101,7 @@ Other parts: [Part 1 · The Family Tree](https://adminmrobo.github.io/ML_00_Algo
 
 # Sunʼiy intellekt algoritmlari oilasi — 3-qism · Oila kengashi
 
-Oʻnlab mashinali oʻqitish algoritmlarini toʻrt xonadonning shajarasiga jamlaydigan va tugmalarni bosib, oʻzingiz ishga tushirib oʻrganadigan oʻquv veb-sahifasi. Don Doktor oldida Drozofila tadqiqotchisi va Money-Robo har bir hududda bellashadi, gʻolibni esa sahifa brauzerda hisoblagan maʼlumotlar belgilaydi.
+Oʻnlab mashinali oʻqitish algoritmlarini toʻrt xonadonning shajarasiga jamlaydigan va tugmalarni bosib, oʻzingiz ishga tushirib oʻrganadigan oʻquv veb-sahifasi. Don Doktor oldida Drozofila tadqiqotchisi va AbaBot har bir hududda bellashadi, gʻolibni esa sahifa brauzerda hisoblagan maʼlumotlar belgilaydi.
 
 - Muallif: Ahn Sangsun (M-Robo kompaniyasi rahbari)
 - Litsenziya: CC BY-NC 4.0 (notijorat foydalanish, manbani koʻrsatish majburiy) — [LICENSE.md](LICENSE.md)
@@ -123,7 +123,7 @@ Boshqa qismlar: [1-qism · Shajara](https://adminmrobo.github.io/ML_00_Algorithm
 
 # Семейное древо алгоритмов ИИ — Часть 3 · Совет семьи
 
-Обучающий сайт, который сводит десятки алгоритмов машинного обучения в одно древо из четырёх кланов: вы нажимаете кнопки и запускаете всё сами. Перед Доном-Доктором Исследователь-дрозофила и Money-Robo проводят поединок в каждом районе, а победителя определяют данные, которые страница считает прямо в браузере.
+Обучающий сайт, который сводит десятки алгоритмов машинного обучения в одно древо из четырёх кланов: вы нажимаете кнопки и запускаете всё сами. Перед Доном-Доктором Исследователь-дрозофила и АбаБот проводят поединок в каждом районе, а победителя определяют данные, которые страница считает прямо в браузере.
 
 - Автор: Ан Сансон (генеральный директор M-Robo Co., Ltd.)
 - Лицензия: CC BY-NC 4.0 (некоммерческое использование, обязательное указание авторства) — [LICENSE.md](LICENSE.md)

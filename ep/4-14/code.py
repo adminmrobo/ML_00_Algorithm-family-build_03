@@ -72,7 +72,7 @@ def evaluate(Q, design):
     return total, cleaned
 
 # ---------------------------------------------------------------
-# 4) 시드 5개로 비교 (담판: 1번 = Money-Robo, 2번 = 초파리)
+# 4) 시드 5개로 비교 (담판: 1번 = 주판봇, 2번 = 초파리)
 print("보상  누적 보상(평균, 최저~최고)   청소된 칸(평균)")
 for design in (1, 2, 3):
     res = [evaluate(train(design, seed), design) for seed in range(11, 16)]

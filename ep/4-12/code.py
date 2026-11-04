@@ -38,7 +38,7 @@ def report(name, pred):
           f"F1 {f1_score(y_te, pred, zero_division=0):.3f}  | 맞힌 사기 {tp} 놓친 사기 {fn} 잘못 막은 정상 {fp}")
 
 print("--- 담판: 처음 보는 1,000건 (사기 10건) ---")
-report("Money-Robo · 전부 정상", np.zeros_like(y_te))
+report("주판봇 · 전부 정상", np.zeros_like(y_te))
 report(f"초파리 · 로지스틱 (문턱 {th:.2f})", (p_te >= th).astype(int))
 
 # ---------------------------------------------------------------

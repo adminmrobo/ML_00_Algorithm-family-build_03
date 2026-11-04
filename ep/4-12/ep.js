@@ -87,9 +87,9 @@ Duel('d12',{title:'정확도 99%면 끝일까',q:'처음 보는 거래 1,000건 
  fly:['로지스틱 + 문턱 조정','99%가 뭐든, 사기를 몇 건 잡았는지부터 봐야지.'],robo:['전부 "정상"이라고 답한다','정확도 99%! 이보다 높기도 힘들걸.'],roboMood:'calc',
  run:async function(p){p(.4);await wait(120);var a=LEDG.cm(W.TE,1.01),b=LEDG.cm(W.TE,TH0);p(1);
   return {winner:b.re>a.re&&b.f1>a.f1?'f':(b.f1<a.f1?'r':'d'),big:false,
-   measure:'정확도는 Money-Robo 쪽 '+pct(a.acc)+', 초파리 쪽 '+pct(b.acc)+'. 차이는 '+fx((b.acc-a.acc)*100,1)+'%p뿐이에요. 그런데 사기 10건 중 Money-Robo 쪽은 '+a.tp+'건을 잡아 재현율 '+pct(a.re,0)+', 초파리 쪽은 '+b.tp+'건을 잡아 재현율 '+pct(b.re,0)+'예요. 초파리 쪽이 막은 거래 '+b.flag+'건 중 진짜 사기가 '+b.tp+'건이라 정밀도는 '+prS(b.pr)+', F1은 '+fx(b.f1,2)+'입니다. 문턱 '+TH0.toFixed(2)+'는 배울 데이터에서만 골랐어요.',
+   measure:'정확도는 주판봇 쪽 '+pct(a.acc)+', 초파리 쪽 '+pct(b.acc)+'. 차이는 '+fx((b.acc-a.acc)*100,1)+'%p뿐이에요. 그런데 사기 10건 중 주판봇 쪽은 '+a.tp+'건을 잡아 재현율 '+pct(a.re,0)+', 초파리 쪽은 '+b.tp+'건을 잡아 재현율 '+pct(b.re,0)+'예요. 초파리 쪽이 막은 거래 '+b.flag+'건 중 진짜 사기가 '+b.tp+'건이라 정밀도는 '+prS(b.pr)+', F1은 '+fx(b.f1,2)+'입니다. 문턱 '+TH0.toFixed(2)+'는 배울 데이터에서만 골랐어요.',
    verdict:'드문 사건을 찾는 문제에서 정확도는 거짓말을 한다. 전부 "정상"은 사기를 한 건도 막지 못했다. 이 구역은 초파리 쪽이다.',key:'놓침과 헛경보 중 무엇이 비싼지 먼저 정하고, 그에 맞는 지표로 잰다.',
-   render:function(box){box.innerHTML=statGrid([[pct(a.acc),'Money-Robo · 정확도','r'],[pct(a.re,0),'Money-Robo · 재현율','r'],[pct(b.acc),'초파리 · 정확도','f'],[pct(b.re,0),'초파리 · 재현율','f']])+cmTable([['Money-Robo · 전부 "정상"',a],['초파리 · 로지스틱 (문턱 '+TH0.toFixed(2)+')',b]]);}};},
+   render:function(box){box.innerHTML=statGrid([[pct(a.acc),'주판봇 · 정확도','r'],[pct(a.re,0),'주판봇 · 재현율','r'],[pct(b.acc),'초파리 · 정확도','f'],[pct(b.re,0),'초파리 · 재현율','f']])+cmTable([['주판봇 · 전부 "정상"',a],['초파리 · 로지스틱 (문턱 '+TH0.toFixed(2)+')',b]]);}};},
  alts:[{label:'문턱을 아주 낮추면?',run:async function(box){var c=LEDG.cm(W.TE,0.05),b=LEDG.cm(W.TE,TH0);
    box.innerHTML=cmTable([['문턱 '+TH0.toFixed(2)+' (담판)',b],['문턱 0.05',c]])+say('fly','magnify','문턱을 0.05까지 내리면 사기 '+c.tp+'건을 잡아 재현율 '+pct(c.re,0)+'. 대신 정상 고객 '+c.fp+'명을 막아서 정밀도가 '+prS(c.pr)+'로 떨어져.')+say('asst','confusion','어느 문턱이 맞는지는 놓친 사기 한 건과 잘못 막은 고객 한 명의 비용을 비교해서 정해요. 숫자가 아니라 사업이 정할 몫이에요.');}},
   {label:'사기가 절반이라면?',run:async function(box){var H=LEDG.world(0.5),a=LEDG.cm(H.TE,1.01),b=LEDG.cm(H.TE,H.th);

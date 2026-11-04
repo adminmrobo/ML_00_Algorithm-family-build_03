@@ -37,7 +37,7 @@
   <div class="wrap">
     <div class="series" id="series" aria-label="알고리즘 패밀리 시리즈 목록"></div>
     <div class="kicker">인공지능 알고리즘 패밀리 조직도 · 4-15<span class="fam fam-ens">3부 가문 회합 · 마지막 담판</span></div>
-    <canvas class="stagecv" id="heroCv" width="1100" height="340" role="img" aria-label="회합 테이블이 놓인 방 가운데에 큰 놋쇠 저울이 흔들린다. 왼쪽 접시에는 설명과 속도, 오른쪽 접시에는 성능이 올려져 있다. 왼쪽에 돋보기를 든 초파리 연구원, 오른쪽에 계산기를 든 Money-Robo가 서 있다"></canvas>
+    <canvas class="stagecv" id="heroCv" width="1100" height="340" role="img" aria-label="회합 테이블이 놓인 방 가운데에 큰 놋쇠 저울이 흔들린다. 왼쪽 접시에는 설명과 속도, 오른쪽 접시에는 성능이 올려져 있다. 왼쪽에 돋보기를 든 초파리 연구원, 오른쪽에 주판을 든 주판봇이 서 있다"></canvas>
     <div class="hero-grid">
       <div>
         <h1>마지막 담판 — 성능만으로는 고르지 않는다</h1>
@@ -60,7 +60,7 @@
     </div>
     <div class="cast" aria-label="등장인물">
       <div class="say doc"><img data-who="doc" data-mood="scale" alt="" aria-hidden="true"><div class="bub"><span class="who">대부 박사</span>마지막 회합입니다. 배포할 모델은 성능 · 비용 · 설명의 저울로 고르죠. 그리고 어느 칸이 무거운지는 문제의 주인이 정합니다.</div></div>
-      <div class="say robo"><img data-who="robo" data-mood="calc" alt="" aria-hidden="true"><div class="bub"><span class="who">Money-Robo</span>계산은 끝났어. 제일 잘 맞히는 큰 앙상블에 건다. 시즌 우승도 내 거다.</div></div>
+      <div class="say robo"><img data-who="robo" data-mood="calc" alt="" aria-hidden="true"><div class="bub"><span class="who">주판봇</span>계산은 끝났어. 제일 잘 맞히는 큰 앙상블에 건다. 시즌 우승도 내 거다.</div></div>
       <div class="say fly"><img data-who="fly" data-mood="magnify" alt="" aria-hidden="true"><div class="bub"><span class="who">초파리 연구원</span>그 앙상블, 대출을 거절당한 사람한테 이유를 말해 줄 수 있어?</div></div>
     </div>
     <aside class="prereq" aria-label="먼저 읽으면 좋은 편">
@@ -91,7 +91,7 @@
       <span class="tag">저울 · 무게는 문제의 주인이 정한다</span>
       <div class="pills" id="owner" role="group" aria-label="문제 고르기"><button data-v="even" aria-pressed="true">세 칸 같은 무게</button><button data-v="loan" aria-pressed="false">대출 심사</button><button data-v="reco" aria-pressed="false">상품 추천</button></div>
       <p class="muted" id="ownerInfo" style="font-size:13.5px;margin:6px 0 0"></p>
-      <div class="cwrap" style="margin-top:8px"><canvas class="fig" id="scaleCv" aria-label="저울. 왼쪽 접시는 초파리의 로지스틱, 오른쪽 접시는 Money-Robo의 큰 앙상블이다. 각 칸에서 앞선 쪽 접시에 성능, 비용, 설명 추가 무게만큼 올라가고, 합에 따라 저울이 기운다"></canvas></div>
+      <div class="cwrap" style="margin-top:8px"><canvas class="fig" id="scaleCv" aria-label="저울. 왼쪽 접시는 초파리의 로지스틱, 오른쪽 접시는 주판봇의 큰 앙상블이다. 각 칸에서 앞선 쪽 접시에 성능, 비용, 설명 추가 무게만큼 올라가고, 합에 따라 저울이 기운다"></canvas></div>
       <div class="wrow">
         <label>성능 무게 <b id="wv_p" class="num">1</b><input type="range" id="w_p" min="0" max="3" step="0.5" value="1"></label>
         <label>비용 무게 <b id="wv_c" class="num">1</b><input type="range" id="w_c" min="0" max="3" step="0.5" value="1"></label>

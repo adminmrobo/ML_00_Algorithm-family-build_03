@@ -28,7 +28,7 @@ function leakPre(W){var A=W.tr.concat(W.va,W.te),s=stats(A),rk=rank(A,s),best=nu
 function leakTest(W){var s=stats(W.tr),rk=rank(W.tr,s),best=null,trace=[];
   MS.forEach(function(m){var md=fit(W.tr,s,rk.slice(0,m)),a=acc(md,W.te);trace.push([m,a]);if(!best||a>best.te)best={m:m,te:a,md:md};});
   return {m:best.m,te:best.te,fresh:acc(best.md,W.fresh),trace:trace};}
-/* 누수①+②: 전체로 전처리하고 시험 점수로 고르기 (Money-Robo의 방식) */
+/* 누수①+②: 전체로 전처리하고 시험 점수로 고르기 (주판봇의 방식) */
 function leakAll(W){var A=W.tr.concat(W.va,W.te),s=stats(A),rk=rank(A,s),best=null,trace=[];
   MS.forEach(function(m){var md=fit(W.tr.concat(W.va),s,rk.slice(0,m)),a=acc(md,W.te);trace.push([m,a]);if(!best||a>best.te)best={m:m,te:a,md:md};});
   return {m:best.m,te:best.te,fresh:acc(best.md,W.fresh),trace:trace};}

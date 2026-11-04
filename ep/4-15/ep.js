@@ -8,7 +8,7 @@ heroStage($('heroCv'),{bg:'sc_scale',bgY:0,fly:'magnify',robo:'calc',motif:funct
   ctx.strokeStyle='#d4a54a';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx,250);ctx.stroke();ctx.fillStyle='#d4a54a';ctx.fillRect(cx-46,248,92,10);
   ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(-190,0);ctx.lineTo(190,0);ctx.stroke();ctx.restore();
   circ(ctx,cx,cy,9,'#d4a54a');
-  [[-1,'초파리 · 로지스틱',['설명','속도']],[1,'Money-Robo · 큰 앙상블',['성능']]].forEach(function(s){var px=cx+s[0]*190*Math.cos(ang),py=cy+s[0]*190*Math.sin(ang);
+  [[-1,'초파리 · 로지스틱',['설명','속도']],[1,'주판봇 · 큰 앙상블',['성능']]].forEach(function(s){var px=cx+s[0]*190*Math.cos(ang),py=cy+s[0]*190*Math.sin(ang);
     ctx.strokeStyle=rgba('#d4a54a',.7);ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(px-44,py+70);ctx.moveTo(px,py);ctx.lineTo(px+44,py+70);ctx.stroke();
     ctx.fillStyle=rgba('#d4a54a',.85);rr(ctx,px-56,py+70,112,10,5);ctx.fill();
     s[2].forEach(function(w,i){ctx.fillStyle=s[0]<0?'rgba(208,83,63,.9)':'rgba(111,183,180,.9)';rr(ctx,px-44+i*48,py+42,42,26,6);ctx.fill();ctx.font=font(12,700);ctx.fillStyle='#0f0d0b';ctx.textAlign='center';ctx.fillText(w,px-23+i*48,py+60);});
@@ -18,23 +18,23 @@ heroStage($('heroCv'),{bg:'sc_scale',bgY:0,fly:'magnify',robo:'calc',motif:funct
 /* ── 01 결승 저울 ── */
 (function(){var cv=$('scaleCv'),wv=$('wCv'),R=null,Wt={p:1,c:1,e:1},tilt=0,target=0;
  var PRE={loan:{p:1,c:1,e:3,t:'대출 심사: 거절 이유를 고객에게 설명해야 한다'},reco:{p:3,c:1,e:0.5,t:'상품 추천: 조금이라도 더 맞히는 것이 매출이다'},even:{p:1,c:1,e:1,t:'세 칸에 같은 무게'}};
- function sides(){if(!R)return [0,0,0];return [R.ea>R.la?-1:(R.ea<R.la?1:0),R.lp<R.ep?1:-1,1];}/* +1 초파리 쪽, −1 Money-Robo 쪽 */
+ function sides(){if(!R)return [0,0,0];return [R.ea>R.la?-1:(R.ea<R.la?1:0),R.lp<R.ep?1:-1,1];}/* +1 초파리 쪽, −1 주판봇 쪽 */
  function score(){var s=sides();return Wt.p*s[0]+Wt.c*s[1]+Wt.e*s[2];}
  function draw(){var H=300,Wd=fit(cv,H),ctx=cv.getContext('2d'),C=cols();ctx.clearRect(0,0,Wd,H);var cx=Wd/2,cy=70;
   ctx.strokeStyle=C.amber;ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx,H-40);ctx.stroke();ctx.fillStyle=C.amber;ctx.fillRect(cx-50,H-42,100,10);
   var L=Math.min(260,Wd*0.36),a=tilt;ctx.save();ctx.translate(cx,cy);ctx.rotate(a);ctx.beginPath();ctx.moveTo(-L,0);ctx.lineTo(L,0);ctx.stroke();ctx.restore();circ(ctx,cx,cy,8,C.amber);
-  [[-1,'초파리 · 로지스틱',C.c_fly],[1,'Money-Robo · 큰 앙상블',C.c_robo]].forEach(function(s){var px=cx+s[0]*L*Math.cos(a),py=cy+s[0]*L*Math.sin(a);
+  [[-1,'초파리 · 로지스틱',C.c_fly],[1,'주판봇 · 큰 앙상블',C.c_robo]].forEach(function(s){var px=cx+s[0]*L*Math.cos(a),py=cy+s[0]*L*Math.sin(a);
    ctx.strokeStyle=rgba(C.amber,.7);ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(px-48,py+80);ctx.moveTo(px,py);ctx.lineTo(px+48,py+80);ctx.stroke();ctx.fillStyle=rgba(C.amber,.8);rr(ctx,px-60,py+80,120,9,4);ctx.fill();
    var sd=sides(),names=['성능','비용','설명'],k=0;sd.forEach(function(v,i){var w=[Wt.p,Wt.c,Wt.e][i];if((s[0]<0&&v>0)||(s[0]>0&&v<0)){if(w<=0)return;var hh=10+w*9;ctx.fillStyle=rgba(s[2],.85);rr(ctx,px-52+k*36,py+80-hh,32,hh,4);ctx.fill();ctx.font=font(10.5,700);ctx.fillStyle=C.text;ctx.textAlign='center';ctx.fillText(names[i],px-36+k*36,py+74-hh);k++;}});
    ctx.font=font(12.5,700);ctx.fillStyle=s[2];ctx.textAlign='center';ctx.fillText(s[1],px,py+108);});
-  var sc=score();ctx.font=font(13,700);ctx.fillStyle=C.text;ctx.textAlign='center';ctx.fillText(!R?'저울에 올리는 중…':(Math.abs(sc)<0.01?'저울이 수평이다':(sc>0?'초파리 쪽으로 기운다':'Money-Robo 쪽으로 기운다')),cx,24);
+  var sc=score();ctx.font=font(13,700);ctx.fillStyle=C.text;ctx.textAlign='center';ctx.fillText(!R?'저울에 올리는 중…':(Math.abs(sc)<0.01?'저울이 수평이다':(sc>0?'초파리 쪽으로 기운다':'주판봇 쪽으로 기운다')),cx,24);
   stamp(ctx,Wd,'예시 데이터');}
  function drawW(){if(!R)return;var H=200,Wd=fit(wv,H),ctx=wv.getContext('2d'),C=cols(),l=110,r=Wd-20,mid=(l+r)/2,mx=2.2;ctx.clearRect(0,0,Wd,H);
   ctx.strokeStyle=C.rule;ctx.beginPath();ctx.moveTo(mid,6);ctx.lineTo(mid,H-6);ctx.stroke();
   FIN.FEAT.forEach(function(f,i){var y=12+i*23,v=R.w[i],x=mid+v/mx*(r-mid);ctx.fillStyle=v>=0?rgba(C.gfp,.8):rgba(C.eye,.8);ctx.fillRect(Math.min(mid,x),y,Math.abs(x-mid),15);
    ctx.font=font(12);ctx.fillStyle=C.text;ctx.textAlign='right';ctx.fillText(f,l-8,y+12);ctx.textAlign=v>=0?'left':'right';ctx.fillStyle=C.muted;ctx.fillText(fx(v,2),x+(v>=0?5:-5),y+12);});}
  function ui(){var s=score();target=Math.max(-.22,Math.min(.22,-s*.05));
-  $('scaleInfo').innerHTML=R?statGrid([[pct(R.la),'초파리 · 로지스틱 · 검증 정확도','f'],[pct(R.ea),'Money-Robo · 큰 앙상블 · 검증 정확도','r'],[fx(R.lp,2)+' µs','로지스틱 · 예측 1건','f'],[fx(R.ep,1)+' µs','앙상블 · 예측 1건','r'],[fx(R.tl,0)+' ms','로지스틱 · 학습','f'],[fx(R.te,0)+' ms','앙상블 · 학습','r'],['9개','로지스틱이 기억하는 숫자 (가중치 8 + 절편)','f'],[R.size.e.toLocaleString()+'개','앙상블의 질문·잎 수','r']]):'<p class="muted">계산 중…</p>';
+  $('scaleInfo').innerHTML=R?statGrid([[pct(R.la),'초파리 · 로지스틱 · 검증 정확도','f'],[pct(R.ea),'주판봇 · 큰 앙상블 · 검증 정확도','r'],[fx(R.lp,2)+' µs','로지스틱 · 예측 1건','f'],[fx(R.ep,1)+' µs','앙상블 · 예측 1건','r'],[fx(R.tl,0)+' ms','로지스틱 · 학습','f'],[fx(R.te,0)+' ms','앙상블 · 학습','r'],['9개','로지스틱이 기억하는 숫자 (가중치 8 + 절편)','f'],[R.size.e.toLocaleString()+'개','앙상블의 질문·잎 수','r']]):'<p class="muted">계산 중…</p>';
   ['p','c','e'].forEach(function(k){$('w_'+k).value=Wt[k];$('wv_'+k).textContent=Wt[k];});}
  onTick(cv,function(dt){var d=target-tilt;if(Math.abs(d)>1e-4){tilt+=d*Math.min(1,dt*6);draw();}});
  ['p','c','e'].forEach(function(k){$('w_'+k).addEventListener('input',function(){Wt[k]=+this.value;$('ownerInfo').textContent='직접 정한 무게';document.querySelectorAll('#owner button').forEach(function(b){b.setAttribute('aria-pressed','false')});ui();draw();});});
@@ -69,7 +69,7 @@ var MAPE={
 function renderRecap(){var rows=EPISODES.map(function(e,i){var w=e.n===EP.n?(SCORE.mine||''):e.plan;return '<tr><td><a href="'+e.f+'">'+e.n+'</a></td><td>'+e.t+'</td><td>'+FIN.RECAP[e.n]+'</td><td class="wcell">'+(w?winIcon(w)+(w==='x'?' <span class="dq">실격승</span>':''):'<span class="muted">장부 열기 전</span>')+'</td></tr>';});
  $('recap').innerHTML='<div class="tw"><table class="tb"><thead><tr><th>구역</th><th>제목</th><th>담판</th><th>차지한 쪽</th></tr></thead><tbody>'+rows.join('')+'</tbody></table></div>';
  var p=prevTotals(),f=p.f,r=p.r,d=p.d,w=SCORE.mine;if(w==='f'||w==='x')f++;else if(w==='r')r++;else if(w==='d')d++;
- $('finalScore').innerHTML=statGrid([[f,'초파리 쪽 구역','f'],[r,'Money-Robo 쪽 구역','r'],[d,'나눠 가진 구역'],[w?'15 / 15':'14 / 15','장부를 연 구역']]);}
+ $('finalScore').innerHTML=statGrid([[f,'초파리 쪽 구역','f'],[r,'주판봇 쪽 구역','r'],[d,'나눠 가진 구역'],[w?'15 / 15':'14 / 15','장부를 연 구역']]);}
 (function(){var fc={sup:'var(--fam-sup)',uns:'var(--fam-uns)',rl:'var(--fam-rl)',ens:'var(--fam-ens)'},fn={sup:'지도 가문',uns:'비지도 가문',rl:'강화 가문',ens:'앙상블 연합'},file={};EPISODES.forEach(function(e){file[e.n]=e.f;});
  $('poster').innerHTML=FIN.POSTER.map(function(g){return '<div class="pgrp" style="--fc:'+fc[g.fam]+'"><div class="ph"><b>'+g.p+'</b><span>'+fn[g.fam]+' · <a href="'+file[g.ep]+'">'+g.ep+'</a></span></div><div class="pcells">'+
   g.m.map(function(m){var dbl=m.slice(-1)==='*',nm=dbl?m.slice(0,-1):m;return '<a class="pcell" href="'+file[g.ep]+'">'+nm+(dbl?'<span class="dbl" title="두 가문에 몸담은 조직원">두 가문</span>':'')+'</a>';}).join('')+'</div></div>';}).join('');
@@ -82,14 +82,14 @@ Duel('d15',{title:'대출 심사에 어떤 모델을 배포할까',q:'대출 800
  fly:['로지스틱 회귀','조금 덜 맞혀도 왜 거절했는지 말할 수 있어야지.'],robo:['큰 앙상블 (GBM 두 벌 + 랜덤 포레스트)','가장 잘 맞히는 놈을 배포한다. 투자는 성능에.'],roboMood:'calc',
  run:async function(p){var o=await finResult(p);
   var perf=o.ea>=o.la,fast=o.lp<o.ep,w=perf&&fast?'d':(perf?'r':'f');
-  return {winner:w,measure:'세 벌 평균 검증 정확도는 Money-Robo 쪽 앙상블 '+pct(o.ea)+', 초파리 쪽 로지스틱 '+pct(o.la)+'예요. 차이는 '+fx((o.ea-o.la)*100,1)+'%p예요. 대신 예측 1건에 앙상블은 '+fx(o.ep,1)+'µs, 로지스틱은 '+fx(o.lp,2)+'µs로 약 '+Math.round(o.ep/o.lp)+'배 차이가 나고, 학습도 '+fx(o.te,0)+'ms 대 '+fx(o.tl,0)+'ms예요. 로지스틱은 숫자 9개로 이유를 설명하지만, 앙상블은 질문·잎이 '+o.size.e.toLocaleString()+'개라 따로 설명 도구가 필요해요.',
-   verdict:'성능은 Money-Robo, 속도와 설명은 초파리다. 성능이 중요한 추천이라면 Money-Robo, 결정 이유를 설명해야 하는 심사라면 초파리다. 무엇이 중요한지는 문제의 주인이 정한다. 이 구역은 나눠 갖는다.',key:'배포할 모델은 성능 · 비용 · 설명의 저울로 고른다.',
-   render:function(box){box.innerHTML=statGrid([[pct(o.la),'초파리 · 검증 정확도','f'],[pct(o.ea),'Money-Robo · 검증 정확도','r'],[fx(o.lp,2)+' µs','초파리 · 예측 1건','f'],[fx(o.ep,1)+' µs','Money-Robo · 예측 1건','r']])+
+  return {winner:w,measure:'세 벌 평균 검증 정확도는 주판봇 쪽 앙상블 '+pct(o.ea)+', 초파리 쪽 로지스틱 '+pct(o.la)+'예요. 차이는 '+fx((o.ea-o.la)*100,1)+'%p예요. 대신 예측 1건에 앙상블은 '+fx(o.ep,1)+'µs, 로지스틱은 '+fx(o.lp,2)+'µs로 약 '+Math.round(o.ep/o.lp)+'배 차이가 나고, 학습도 '+fx(o.te,0)+'ms 대 '+fx(o.tl,0)+'ms예요. 로지스틱은 숫자 9개로 이유를 설명하지만, 앙상블은 질문·잎이 '+o.size.e.toLocaleString()+'개라 따로 설명 도구가 필요해요.',
+   verdict:'성능은 주판봇, 속도와 설명은 초파리다. 성능이 중요한 추천이라면 주판봇, 결정 이유를 설명해야 하는 심사라면 초파리다. 무엇이 중요한지는 문제의 주인이 정한다. 이 구역은 나눠 갖는다.',key:'배포할 모델은 성능 · 비용 · 설명의 저울로 고른다.',
+   render:function(box){box.innerHTML=statGrid([[pct(o.la),'초파리 · 검증 정확도','f'],[pct(o.ea),'주판봇 · 검증 정확도','r'],[fx(o.lp,2)+' µs','초파리 · 예측 1건','f'],[fx(o.ep,1)+' µs','주판봇 · 예측 1건','r']])+
     '<div class="tw" style="margin-top:10px"><table class="tb"><thead><tr><th>데이터</th><th>로지스틱</th><th>큰 앙상블</th></tr></thead><tbody>'+o.rows.map(function(r){return '<tr><td>'+r[0]+'번째 벌</td><td>'+pct(r[1])+'</td><td>'+pct(r[2])+'</td></tr>';}).join('')+'</tbody></table></div>';setTimeout(renderRecap,0);}};},
  alts:[{label:'설명이 꼭 필요하다면? (대출 심사)',run:async function(box){var o=await finResult();
-   box.innerHTML=statGrid([['성능','Money-Robo 쪽 (+'+fx((o.ea-o.la)*100,1)+'%p)','r'],['속도','초파리 쪽 (약 '+Math.round(o.ep/o.lp)+'배 빠름)','f'],['설명 ×3','초파리 쪽 (가중치 9개)','f']])+say('fly','tip','거절당한 고객에게 "소득 가중치 '+fx(o.w[0],2)+', 부채 비율 '+fx(o.w[1],2)+'"처럼 이유를 댈 수 있어. 저울은 내 쪽이야.')+say('robo','sigh',''+fx((o.ea-o.la)*100,1)+'%p를 포기하는 셈이군. 설명 도구를 붙이면 되지 않나? …비용이 또 드는군.');}},
+   box.innerHTML=statGrid([['성능','주판봇 쪽 (+'+fx((o.ea-o.la)*100,1)+'%p)','r'],['속도','초파리 쪽 (약 '+Math.round(o.ep/o.lp)+'배 빠름)','f'],['설명 ×3','초파리 쪽 (가중치 9개)','f']])+say('fly','tip','거절당한 고객에게 "소득 가중치 '+fx(o.w[0],2)+', 부채 비율 '+fx(o.w[1],2)+'"처럼 이유를 댈 수 있어. 저울은 내 쪽이야.')+say('robo','sigh',''+fx((o.ea-o.la)*100,1)+'%p를 포기하는 셈이군. 설명 도구를 붙이면 되지 않나? …비용이 또 드는군.');}},
   {label:'추천 시스템이라면?',run:async function(box){var o=await finResult();
-   box.innerHTML=statGrid([['성능 ×3','Money-Robo 쪽','r'],['속도','초파리 쪽','f'],['설명 ×0.5','초파리 쪽','f']])+say('robo','happy','상품 추천은 한 건 한 건 설명할 필요가 적지. '+fx((o.ea-o.la)*100,1)+'%p가 곧 매출이야. 저울은 내 쪽!')+say('fly','coffee','예측 1건 '+fx(o.ep,1)+'µs면 아직은 버틸 만하네. 인정. 그래도 기준선으로 로지스틱은 꼭 같이 돌려.');}}]});
+   box.innerHTML=statGrid([['성능 ×3','주판봇 쪽','r'],['속도','초파리 쪽','f'],['설명 ×0.5','초파리 쪽','f']])+say('robo','happy','상품 추천은 한 건 한 건 설명할 필요가 적지. '+fx((o.ea-o.la)*100,1)+'%p가 곧 매출이야. 저울은 내 쪽!')+say('fly','coffee','예측 1건 '+fx(o.ep,1)+'µs면 아직은 버틸 만하네. 인정. 그래도 기준선으로 로지스틱은 꼭 같이 돌려.');}}]});
 
 /* ══ 확인 문제 ══ */
 var QUIZ={q15:[

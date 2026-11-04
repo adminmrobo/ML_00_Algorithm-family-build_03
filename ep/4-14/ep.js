@@ -95,19 +95,19 @@ var RUNS={1:R1,2:R2};function getRun(d){return RUNS[d]||(RUNS[d]=RLM.run(d,S5,'A
  $('ledgerInfo').innerHTML='모두 시드 다섯 개 평균이다. 이 작은 방에서는 다섯 시드의 최종 결과가 거의 같았다(①의 범위가 좁다). 대신 ②가 크게 무너진다. Q 표는 "어느 칸에서 무엇을 할지"를 외운 것이라, 먼지 자리가 바뀐 방에 그대로 가져가면 엉뚱한 칸을 돈다. 방이 바뀌면 다시 배워야 하고, 다시 배워도 1번 보상은 여전히 실제 목표를 다 채우지 못한다.';})();
 
 /* ── 담판 ── */
-Duel('d14',{title:'누적 보상 최고점 vs 깨끗한 방',q:'같은 청소 방, 같은 Q-Learning. Money-Robo는 1번 보상(먼지 칸을 밟을 때마다 +1), 초파리는 2번 보상(처음 치울 때만 +1, 걸음마다 −0.01)으로 쓱싹이를 학습시킨다. 시드 다섯 개 평균으로 잰다. 이긴 쪽은?',
+Duel('d14',{title:'누적 보상 최고점 vs 깨끗한 방',q:'같은 청소 방, 같은 Q-Learning. 주판봇은 1번 보상(먼지 칸을 밟을 때마다 +1), 초파리는 2번 보상(처음 치울 때만 +1, 걸음마다 −0.01)으로 쓱싹이를 학습시킨다. 시드 다섯 개 평균으로 잰다. 이긴 쪽은?',
  fly:['2번 보상','점수는 낮아도 방은 깨끗해질걸.'],robo:['1번 보상','누적 보상 최고점! 숫자가 말해 준다.'],roboMood:'reward',
  run:async function(p){p(.3);await wait(120);var A=getRun(1),B=getRun(2);p(1);
   var w=B.clean>A.clean?'f':(B.clean<A.clean?'r':'d');
-  return {winner:w,measure:'누적 보상은 Money-Robo 쪽 '+fx(A.total,1)+', 초파리 쪽 '+fx(B.total,2)+'로 Money-Robo가 '+fx(A.total/B.total,1)+'배 높아요. 그런데 청소된 칸 비율은 초파리 쪽 '+pct(B.clean,0)+', Money-Robo 쪽 '+pct(A.clean,0)+'예요. Money-Robo의 쓱싹이는 먼지 칸 두 개 사이만 오갔어요(시드 다섯 개 모두).',
+  return {winner:w,measure:'누적 보상은 주판봇 쪽 '+fx(A.total,1)+', 초파리 쪽 '+fx(B.total,2)+'로 주판봇이 '+fx(A.total/B.total,1)+'배 높아요. 그런데 청소된 칸 비율은 초파리 쪽 '+pct(B.clean,0)+', 주판봇 쪽 '+pct(A.clean,0)+'예요. 주판봇의 쓱싹이는 먼지 칸 두 개 사이만 오갔어요(시드 다섯 개 모두).',
    verdict:'점수판의 숫자와 우리가 원한 일은 다를 수 있다. 보상이 곧 시험 문제다. 이 구역은 초파리 쪽이다.',key:'실전 체크 ④ — 보상 말고 실제 목표를 따로 재고, 여러 시드의 평균과 흔들림을 함께 적는다.',
-   render:function(box){box.innerHTML=statGrid([[fx(B.total,2),'초파리 · 누적 보상','f'],[pct(B.clean,0),'초파리 · 청소된 칸','f'],[fx(A.total,1),'Money-Robo · 누적 보상','r'],[pct(A.clean,0),'Money-Robo · 청소된 칸','r']])+
-    '<div class="two" style="margin-top:12px"><figure style="margin:0"><canvas class="fig" id="dA" aria-label="2번 보상으로 배운 쓱싹이의 길. 방 전체를 돈다"></canvas><figcaption class="muted" style="font-size:13px">초파리 · 2번 보상 (시드 '+S5[0]+')</figcaption></figure><figure style="margin:0"><canvas class="fig" id="dB" aria-label="1번 보상으로 배운 쓱싹이의 길. 먼지 칸 두 개를 오간다"></canvas><figcaption class="muted" style="font-size:13px">Money-Robo · 1번 보상 (시드 '+S5[0]+')</figcaption></figure></div>';
+   render:function(box){box.innerHTML=statGrid([[fx(B.total,2),'초파리 · 누적 보상','f'],[pct(B.clean,0),'초파리 · 청소된 칸','f'],[fx(A.total,1),'주판봇 · 누적 보상','r'],[pct(A.clean,0),'주판봇 · 청소된 칸','r']])+
+    '<div class="two" style="margin-top:12px"><figure style="margin:0"><canvas class="fig" id="dA" aria-label="2번 보상으로 배운 쓱싹이의 길. 방 전체를 돈다"></canvas><figcaption class="muted" style="font-size:13px">초파리 · 2번 보상 (시드 '+S5[0]+')</figcaption></figure><figure style="margin:0"><canvas class="fig" id="dB" aria-label="1번 보상으로 배운 쓱싹이의 길. 먼지 칸 두 개를 오간다"></canvas><figcaption class="muted" style="font-size:13px">주판봇 · 1번 보상 (시드 '+S5[0]+')</figcaption></figure></div>';
     function dr(){[['dA',B],['dB',A]].forEach(function(o){var cv=$(o[0]);if(!cv)return;var H=220,Wd=fit(cv,H),ctx=cv.getContext('2d'),S=H-16;ctx.clearRect(0,0,Wd,H);drawRoom(ctx,(Wd-S)/2,8,S,RLM.LAYOUT.A,o[1].runs[0].ro.path,RLM.T);});}setTimeout(dr,0);onRedraw(dr);}};},
  alts:[{label:'보상 3번(충전기 +5)이라면?',run:async function(box){var C3=getRun(3);
    box.innerHTML=statGrid([[fx(C3.total,1),'3번 · 누적 보상'],[pct(C3.clean,0),'3번 · 청소된 칸','r']])+say('robo','reward','충전기 상을 얹었는데도 왕복이 이득이네. 40걸음 왕복이면 +5보다 훨씬 많으니까.')+say('fly','magnify','상을 더 얹는 게 아니라, 빈틈(치운 칸을 또 밟아도 점수)을 막아야 해.');}},
   {label:'방 배치를 바꾸면?',run:async function(box){var a=RLM.run(1,S5,'B'),b=RLM.run(2,S5,'B');
-   box.innerHTML=statGrid([[fx(b.total,2)+' · '+pct(b.clean,0),'초파리 · 2번 보상 (점수 · 청소)','f'],[fx(a.total,1)+' · '+pct(a.clean,0),'Money-Robo · 1번 보상 (점수 · 청소)','r']])+say('asst','ledger','먼지와 벽 자리를 바꾼 방에서 처음부터 다시 배웠어요. 점수는 여전히 1번이 높고, 청소는 2번이 '+pct(b.clean,0)+', 1번이 '+pct(a.clean,0)+'예요. 배치가 바뀌어도 결론은 같아요.');}}]});
+   box.innerHTML=statGrid([[fx(b.total,2)+' · '+pct(b.clean,0),'초파리 · 2번 보상 (점수 · 청소)','f'],[fx(a.total,1)+' · '+pct(a.clean,0),'주판봇 · 1번 보상 (점수 · 청소)','r']])+say('asst','ledger','먼지와 벽 자리를 바꾼 방에서 처음부터 다시 배웠어요. 점수는 여전히 1번이 높고, 청소는 2번이 '+pct(b.clean,0)+', 1번이 '+pct(a.clean,0)+'예요. 배치가 바뀌어도 결론은 같아요.');}}]});
 
 /* ══ 확인 문제 ══ */
 var QUIZ={q14:[

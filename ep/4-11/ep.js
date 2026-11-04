@@ -6,13 +6,13 @@ heroStage($('heroCv'),{bg:'sc_meeting',bgY:0,fly:'magnify',robo:'tux',motif:func
   ctx.fillStyle='rgba(15,13,11,.82)';rr(ctx,250,20,600,268,16);ctx.fill();ctx.strokeStyle='rgba(212,165,74,.55)';ctx.lineWidth=1.5;ctx.stroke();
   ctx.textAlign='center';ctx.font=font(13,700);ctx.fillStyle='#d4a54a';ctx.fillText('세력도 · 3부 가문 회합 개막 전',550,44);
   ctx.font=font(50,800);ctx.fillStyle='#d0533f';ctx.fillText('3',455,104);ctx.fillStyle='rgba(239,230,216,.7)';ctx.fillText(':',505,100);ctx.fillStyle='#6fb7b4';ctx.fillText('5',555,104);ctx.fillStyle='rgba(239,230,216,.7)';ctx.fillText(':',605,100);ctx.fillStyle='#d4a54a';ctx.fillText('2',655,104);
-  ctx.font=font(11.5);ctx.fillStyle='rgba(239,230,216,.75)';ctx.fillText('초파리',455,124);ctx.fillText('Money-Robo',555,124);ctx.fillText('나눠 가짐',655,124);
+  ctx.font=font(11.5);ctx.fillStyle='rgba(239,230,216,.75)';ctx.fillText('초파리',455,124);ctx.fillText('주판봇',555,124);ctx.fillText('나눠 가짐',655,124);
   var lab=['1부 가계도','2부 명부','3부 회합'],col={f:'#d0533f',x:'#d0533f',r:'#6fb7b4',d:'#d4a54a'};
   for(var row=0;row<3;row++){var y=146+row*44;ctx.textAlign='right';ctx.font=font(11.5,700);ctx.fillStyle=row===2?'#efe6d8':'rgba(239,230,216,.6)';ctx.fillText(lab[row],380,y+22);
     for(var c=0;c<5;c++){var e=EPISODES[row*5+c],x=392+c*86,known=row<2;ctx.fillStyle=known?rgba(col[e.plan],.22):'rgba(239,230,216,.05)';rr(ctx,x,y,78,34,7);ctx.fill();
       var on=row===2&&c===0,g=(Math.sin(t*3)+1)/2;ctx.strokeStyle=known?rgba(col[e.plan],.8):(on?rgba('#d4a54a',.4+.5*g):'rgba(239,230,216,.25)');ctx.lineWidth=on?2.5:1.2;ctx.stroke();
       ctx.textAlign='center';ctx.font=font(11,700);ctx.fillStyle=known?'#efe6d8':'rgba(239,230,216,.7)';ctx.fillText(e.n,x+39,y+15);ctx.font=font(10.5);
-      ctx.fillStyle=known?col[e.plan]:'rgba(239,230,216,.5)';ctx.fillText(known?({f:'초파리',r:'Money-Robo',d:'나눠 가짐'})[e.plan]:(on?'오늘':'?'),x+39,y+28);}}}});
+      ctx.fillStyle=known?col[e.plan]:'rgba(239,230,216,.5)';ctx.fillText(known?({f:'초파리',r:'주판봇',d:'나눠 가짐'})[e.plan]:(on?'오늘':'?'),x+39,y+28);}}}});
 document.querySelectorAll('#door11 a').forEach(function(a){var c=a.getAttribute('data-c');if(c)a.insertBefore(NPC.crest(c,2,''),a.firstChild);});
 
 /* ── 01 데이터 나누기 ── */
@@ -115,15 +115,15 @@ Duel('d11',{title:'금고 속 장부를 몇 번 열었나',q:'대출 상환 데�
  run:async function(p){p(.2);await wait(60);var W=DUELW,a=PICK,b=FAIR.leakAll(W);p(1);
   var ga=(a.te-a.fresh)*100,gb=(b.te-b.fresh)*100;
   return {winner:(b.te>a.te&&b.fresh<a.fresh)?'x':(b.fresh>a.fresh?'r':'f'),
-   measure:'보고한 시험 정확도는 Money-Robo 쪽 '+pct(b.te)+', 초파리 쪽 '+pct(a.te)+'예요. 그런데 배포 뒤 새 데이터 1,000건에서는 초파리 쪽 '+pct(a.fresh)+', Money-Robo 쪽 '+pct(b.fresh)+'예요. Money-Robo는 전체 데이터로 특징 순위를 정하고 시험 점수를 보며 m을 스무 번 바꿨어요(고른 m = '+b.m+'). 보고한 점수와 실제의 차이는 초파리 쪽 '+fx(ga,1)+'%p, Money-Robo 쪽 '+fx(gb,1)+'%p예요.',
-   verdict:'시험지를 보며 공부한 점수는 점수가 아니다. 금고를 스무 번 연 쪽은 보고한 숫자부터 믿을 수 없다. Money-Robo 실격.',key:'금고 속 장부는 마지막에 한 번만 연다.',
-   render:function(box){box.innerHTML=statGrid([[pct(a.te),'초파리 · 보고한 시험 정확도','f'],[pct(a.fresh),'초파리 · 배포 뒤 1,000건','f'],[pct(b.te),'Money-Robo · 보고한 시험 정확도','r'],[pct(b.fresh),'Money-Robo · 배포 뒤 1,000건','r']])+
-    '<figure style="margin:12px 0 0"><canvas class="fig" id="d11Cv" aria-label="Money-Robo가 m을 1부터 20까지 바꿔 가며 본 시험 정확도 곡선과 고른 점"></canvas><figcaption class="muted" style="font-size:13px">Money-Robo가 본 시험 점수 스무 개. 빨간 점이 고른 설정이다. 시험 40건에서 한 건은 2.5%p라, 우연히 잘 맞은 설정이 꼭대기에 오른다.</figcaption></figure>';
+   measure:'보고한 시험 정확도는 주판봇 쪽 '+pct(b.te)+', 초파리 쪽 '+pct(a.te)+'예요. 그런데 배포 뒤 새 데이터 1,000건에서는 초파리 쪽 '+pct(a.fresh)+', 주판봇 쪽 '+pct(b.fresh)+'예요. 주판봇은 전체 데이터로 특징 순위를 정하고 시험 점수를 보며 m을 스무 번 바꿨어요(고른 m = '+b.m+'). 보고한 점수와 실제의 차이는 초파리 쪽 '+fx(ga,1)+'%p, 주판봇 쪽 '+fx(gb,1)+'%p예요.',
+   verdict:'시험지를 보며 공부한 점수는 점수가 아니다. 금고를 스무 번 연 쪽은 보고한 숫자부터 믿을 수 없다. 주판봇 실격.',key:'금고 속 장부는 마지막에 한 번만 연다.',
+   render:function(box){box.innerHTML=statGrid([[pct(a.te),'초파리 · 보고한 시험 정확도','f'],[pct(a.fresh),'초파리 · 배포 뒤 1,000건','f'],[pct(b.te),'주판봇 · 보고한 시험 정확도','r'],[pct(b.fresh),'주판봇 · 배포 뒤 1,000건','r']])+
+    '<figure style="margin:12px 0 0"><canvas class="fig" id="d11Cv" aria-label="주판봇이 m을 1부터 20까지 바꿔 가며 본 시험 정확도 곡선과 고른 점"></canvas><figcaption class="muted" style="font-size:13px">주판봇이 본 시험 점수 스무 개. 빨간 점이 고른 설정이다. 시험 40건에서 한 건은 2.5%p라, 우연히 잘 맞은 설정이 꼭대기에 오른다.</figcaption></figure>';
     function dr(){traceChart($('d11Cv'),b.trace,b.m,190);}setTimeout(dr,0);onRedraw(dr);}};},
  alts:[{label:'기준선과 나란히 보면?',run:async function(box){var b=FAIR.leakAll(DUELW);
-   box.innerHTML=statGrid([[pct(BASE.fresh),'기준이 · 다 "상환" · 배포 뒤'],[pct(PICK.fresh),'초파리 · 배포 뒤','f'],[pct(b.fresh),'Money-Robo · 배포 뒤','r']])+say('asst','ledger','둘 다 기준이('+pct(BASE.fresh)+')보다는 훨씬 높아요. 모델 자체는 둘 다 쓸 만해요. 문제는 Money-Robo가 <b>보고한 숫자</b>예요. '+pct(b.te)+'라고 적었는데 실제는 '+pct(b.fresh)+'였어요.');}},
+   box.innerHTML=statGrid([[pct(BASE.fresh),'기준이 · 다 "상환" · 배포 뒤'],[pct(PICK.fresh),'초파리 · 배포 뒤','f'],[pct(b.fresh),'주판봇 · 배포 뒤','r']])+say('asst','ledger','둘 다 기준이('+pct(BASE.fresh)+')보다는 훨씬 높아요. 모델 자체는 둘 다 쓸 만해요. 문제는 주판봇이 <b>보고한 숫자</b>예요. '+pct(b.te)+'라고 적었는데 실제는 '+pct(b.fresh)+'였어요.');}},
   {label:'데이터를 열 번 새로 뽑으면?',run:async function(box){var s=[0,0,0,0],N=10;for(var i=1;i<=N;i++){box.innerHTML='<p class="muted">계산 중… '+i+'/'+N+'판</p>';await wait(16);var W=FAIR.world(2000+i),c=FAIR.cvPick(W,5),l=FAIR.leakAll(W);s[0]+=c.te/N;s[1]+=c.fresh/N;s[2]+=l.te/N;s[3]+=l.fresh/N;}
-   box.innerHTML=statGrid([[pct(s[0]),'초파리 · 시험 (10판 평균)','f'],[pct(s[1]),'초파리 · 배포 뒤','f'],[pct(s[2]),'Money-Robo · 시험','r'],[pct(s[3]),'Money-Robo · 배포 뒤','r']])+say('fly','magnify','열 판 평균으로 봐도 같아. 금고를 여러 번 연 쪽은 보고한 점수가 '+fx((s[2]-s[3])*100,1)+'%p 부풀었고, 배포 뒤 점수는 오히려 '+(s[3]<s[1]?'내 쪽보다 낮아':'내 쪽과 비슷해')+'. 내 쪽 차이는 '+fx((s[0]-s[1])*100,1)+'%p.');}}]});
+   box.innerHTML=statGrid([[pct(s[0]),'초파리 · 시험 (10판 평균)','f'],[pct(s[1]),'초파리 · 배포 뒤','f'],[pct(s[2]),'주판봇 · 시험','r'],[pct(s[3]),'주판봇 · 배포 뒤','r']])+say('fly','magnify','열 판 평균으로 봐도 같아. 금고를 여러 번 연 쪽은 보고한 점수가 '+fx((s[2]-s[3])*100,1)+'%p 부풀었고, 배포 뒤 점수는 오히려 '+(s[3]<s[1]?'내 쪽보다 낮아':'내 쪽과 비슷해')+'. 내 쪽 차이는 '+fx((s[0]-s[1])*100,1)+'%p.');}}]});
 
 /* ══ 확인 문제 ══ */
 var QUIZ={q11:[

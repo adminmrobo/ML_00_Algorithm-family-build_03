@@ -36,7 +36,7 @@ function RNG(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15
 function gauss(r){var u=0;while(!u)u=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*r())}
 
 /* ══ 등장인물 그림 ══════════════════════════════════════════════════ */
-var CAST={doc:'대부 박사',asst:'참모 조수',fly:'초파리 연구원',robo:'Money-Robo'};
+var CAST={doc:'대부 박사',asst:'참모 조수',fly:'초파리 연구원',robo:'주판봇'};
 var DEFAULT={doc:'doc_front',asst:'asst_smile',fly:'fly_clip',robo:'robo_smile'};
 function sprite(who,mood){var k=who+'_'+mood;return SPR[k]||SPR[DEFAULT[who]]||'';}
 function hydrate(root){root=root||document;
@@ -79,7 +79,7 @@ return {draw:draw,el:el,crest:crest,MAP:MAP};})();
 function npcLine(host,kinds,scale,text){var d=document.createElement('div');d.className='npcline';kinds.forEach(function(k){d.appendChild(NPC.el(k,scale||3));});var s=document.createElement('span');s.innerHTML=text;d.appendChild(s);host.appendChild(d);}
 
 /* ══ 시리즈 목록 · 미니맵 · 시즌 점수판 ═════════════════════════════ */
-/* plan: 1부 기획안 1-4절 대결 계획표. f 초파리 승 · r Money-Robo 승 · d 무승부 · x Money-Robo 실격(초파리 승) */
+/* plan: 1부 기획안 1-4절 대결 계획표. f 초파리 승 · r 주판봇 승 · d 무승부 · x 주판봇 실격(초파리 승) */
 var EPISODES=[
  {n:'4-1',f:'4-1_ml_family_map.html',t:'가계도',plan:'d',ready:1},
  {n:'4-2',f:'4-2_supervised.html',t:'지도 가문',plan:'f',ready:1},
@@ -103,7 +103,7 @@ function renderSeries(){var el=$('series');if(!el)return;var cur=epIdx(EP.n);
   el.innerHTML='<a class="home" href="4-0_index.html">⌂ 가계도 목차</a>'+EPISODES.map(function(e,i){var lab=e.n+' '+e.t;var sep=(i===5||i===10)?'<span class="sep">|</span>':'';
     if(i===cur)return sep+'<a class="cur" href="#top" aria-current="page">'+lab+'</a>';
     return sep+(e.ready?'<a href="'+e.f+'">'+lab+'</a>':'<span class="s" title="준비 중">'+lab+'</span>');}).join('');}
-function winIcon(w){if(w==='f'||w==='x')return '<img class="wn" src="'+sprite('fly','arms')+'" alt="초파리 쪽 구역">';if(w==='r')return '<img class="wn" src="'+sprite('robo','happy')+'" alt="Money-Robo 쪽 구역">';if(w==='d')return '<span class="wd" title="무승부">=</span>';return '';}
+function winIcon(w){if(w==='f'||w==='x')return '<img class="wn" src="'+sprite('fly','arms')+'" alt="초파리 쪽 구역">';if(w==='r')return '<img class="wn" src="'+sprite('robo','happy')+'" alt="주판봇 쪽 구역">';if(w==='d')return '<span class="wd" title="무승부">=</span>';return '';}
 function renderMinimap(){var el=$('minimap');if(!el)return;var cur=epIdx(EP.n),me=EPISODES[cur];
   var head='<div class="corner"></div>'+['① 대부 / 회귀파','② 지도 가문 / 분류파','③ 비지도 가문','④ 강화 가문','⑤ 앙상블 연합 / 마지막 담판'].map(function(h){return '<div class="ch">'+h+'</div>';}).join('');
   var grid='';for(var p=0;p<3;p++){grid+='<div class="rh">'+PARTS[p]+'</div>';
@@ -111,7 +111,7 @@ function renderMinimap(){var el=$('minimap');if(!el)return;var cur=epIdx(EP.n),m
       var w=i<cur?e.plan:(i===cur?(SCORE.mine||''):'');
       var inner='<b>'+e.n+'</b><span class="t">'+e.t+'</span>'+winIcon(w);
       grid+=(e.ready&&i!==cur)?'<a class="'+cls+'" href="'+e.f+'">'+inner+'</a>':'<div class="'+cls+'"'+(i===cur?' aria-current="page"':'')+'>'+inner+'</div>';}}
-  el.innerHTML='<div class="mm">'+head+grid+'</div><div class="mmkey"><span><img src="'+sprite('fly','arms')+'" alt="">초파리 쪽 구역</span><span><img src="'+sprite('robo','happy')+'" alt="">Money-Robo 쪽 구역</span><span><b>=</b> 나눠 가진 구역</span><span>흐린 칸: 아직 열리지 않은 구역</span><span>지난 구역의 주인은 시즌 계획표대로 표시하고, 이 구역은 장부를 열면 켜진다</span></div>';}
+  el.innerHTML='<div class="mm">'+head+grid+'</div><div class="mmkey"><span><img src="'+sprite('fly','arms')+'" alt="">초파리 쪽 구역</span><span><img src="'+sprite('robo','happy')+'" alt="">주판봇 쪽 구역</span><span><b>=</b> 나눠 가진 구역</span><span>흐린 칸: 아직 열리지 않은 구역</span><span>지난 구역의 주인은 시즌 계획표대로 표시하고, 이 구역은 장부를 열면 켜진다</span></div>';}
 var SCORE={mine:null};
 function prevTotals(){var cur=epIdx(EP.n),f=0,r=0,d=0;for(var i=0;i<cur;i++){var w=EPISODES[i].plan;if(w==='f'||w==='x')f++;else if(w==='r')r++;else d++;}return {f:f,r:r,d:d};}
 function updateScore(){var p=prevTotals(),f=p.f,r=p.r,d=p.d,w=SCORE.mine;if(w==='f'||w==='x')f++;else if(w==='r')r++;else if(w==='d')d++;
@@ -124,7 +124,7 @@ function updateScore(){var p=prevTotals(),f=p.f,r=p.r,d=p.d,w=SCORE.mine;if(w===
 function Duel(id,o){var el=$(id);
   el.innerHTML='<div class="duel-head"><span class="lab">담판 · '+EP.n+'</span><h3>'+o.title+'</h3></div><p class="duel-q">'+o.q+'</p>'+
    '<div class="vs"><div class="side fly"><img data-who="fly" data-mood="point" alt="" aria-hidden="true"><span class="nm">초파리 연구원</span><span class="pick">'+o.fly[0]+'</span><q>'+o.fly[1]+'</q><span class="badge" hidden></span></div><div class="mid">VS</div>'+
-   '<div class="side robo"><img data-who="robo" data-mood="'+(o.roboMood||'coin')+'" alt="" aria-hidden="true"><span class="nm">Money-Robo</span><span class="pick">'+o.robo[0]+'</span><q>'+o.robo[1]+'</q><span class="badge" hidden></span></div></div>'+
+   '<div class="side robo"><img data-who="robo" data-mood="'+(o.roboMood||'coin')+'" alt="" aria-hidden="true"><span class="nm">주판봇</span><span class="pick">'+o.robo[0]+'</span><q>'+o.robo[1]+'</q><span class="badge" hidden></span></div></div>'+
    '<div class="duel-go"><button class="btn go">장부 열기 ▶</button><span class="muted" style="font-size:13.5px">누가 이길지 먼저 맞혀 보세요.</span><div class="prog" hidden><i></i></div></div><div class="result" hidden aria-live="polite"></div>';
   hydrate(el);
   var btn=el.querySelector('.go'),prog=el.querySelector('.prog'),bar=prog.querySelector('i'),res=el.querySelector('.result'),done=false;
@@ -222,7 +222,7 @@ function heroStage(cv,opt){var ctx=cv.getContext('2d'),t=0,IM={},W=1100,H=340;
     if(IM.fly){var fh=190,fw=IM.fly.width*fh/IM.fly.height;ctx.drawImage(IM.fly,24,H-fh-36+bob,fw,fh);}
     if(IM.robo){var rh=190,rw=IM.robo.width*rh/IM.robo.height;ctx.drawImage(IM.robo,W-rw-24,H-rh-36+Math.sin(t*1.8)*3,rw,rh);}
     ctx.imageSmoothingEnabled=false;ctx.font=font(15,700);ctx.textAlign='left';ctx.fillStyle='#ff7a7a';ctx.fillText('초파리 연구원',34,H-14);
-    ctx.textAlign='right';ctx.fillStyle='#57d0dc';ctx.fillText('Money-Robo',W-34,H-14);}
+    ctx.textAlign='right';ctx.fillStyle='#57d0dc';ctx.fillText('주판봇',W-34,H-14);}
   draw();if(!REDUCE)onTick(cv,function(dt){t+=dt;draw();});}
 
 /* ══ 시작 ═════════════════════════════════════════════════════════ */

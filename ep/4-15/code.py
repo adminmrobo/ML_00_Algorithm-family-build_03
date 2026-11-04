@@ -42,7 +42,7 @@ def make_models():
         ("rf", RandomForestClassifier(n_estimators=200, random_state=0)),
         ("hgb", HistGradientBoostingClassifier(random_state=0)),
     ], voting="soft")
-    return {"초파리 · 로지스틱": logi, "Money-Robo · 큰 앙상블": ens}
+    return {"초파리 · 로지스틱": logi, "주판봇 · 큰 앙상블": ens}
 
 res = {}
 for seed in (1, 2, 3):

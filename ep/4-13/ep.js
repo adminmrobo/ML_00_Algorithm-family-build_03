@@ -75,16 +75,16 @@ heroStage($('heroCv'),{bg:'sc_mirror',bgY:0,fly:'magnify',robo:'calc',motif:func
  ui();onRedraw(draw);})();
 
 /* ── 담판: 무리는 몇 개인가 ── */
-Duel('d13',{title:'무리는 몇 개인가',q:'고객 240명, 특징 8개. 정답 없이 무리 수를 정해야 한다. 초파리는 t-SNE 그림을 읽고, Money-Robo는 k를 바꿔 가며 실루엣 점수를 잰다. 금고에 넣어 둔 진짜 무리 수와 누가 맞을까?',
+Duel('d13',{title:'무리는 몇 개인가',q:'고객 240명, 특징 8개. 정답 없이 무리 수를 정해야 한다. 초파리는 t-SNE 그림을 읽고, 주판봇은 k를 바꿔 가며 실루엣 점수를 잰다. 금고에 넣어 둔 진짜 무리 수와 누가 맞을까?',
  fly:['t-SNE 그림을 읽는다','무리가 6개로 보이는데? 그림이 이렇게 또렷하잖아.'],robo:['실루엣 점수로 고른다','k를 2부터 10까지 재 봤다. 숫자는 하나를 가리킨다.'],roboMood:'calc',
  run:async function(p){p(.3);await wait(120);var fb=U.blobs(FLYP),fk=fb.k,rk=U.bestSil(),T=4;p(.8);
   var fm=U.match(U.km(fk).a),rm=U.match(U.km(rk).a);p(1);
   var w=Math.abs(rk-T)<Math.abs(fk-T)?'r':(Math.abs(rk-T)>Math.abs(fk-T)?'f':'d');
   return {winner:w,big:false,
-   measure:'금고 속 진짜 무리 수는 '+T+'개예요. 초파리 쪽은 이웃 8 그림에서 덩어리 '+fk+'개를 셌고, Money-Robo 쪽은 평균 실루엣이 가장 높은 k = '+rk+'(점수 '+fx(U.sil(rk).mean,3)+')를 골랐어요. 그 수로 K-평균을 돌려 숨긴 정답과 맞춰 보면 '+pct(fm,0)+' 대 '+pct(rm,0)+'예요.',
-   verdict:'이번엔 차가운 숫자가 이겼다. t-SNE는 보기 좋게 펼치는 도구지 무리 수를 세는 도구가 아니다. 이 구역은 Money-Robo 쪽이다.',key:'군집 수는 지표와 업무 의미로 정한다. 그림만 보고 정하지 않는다.',
-   render:function(box){box.innerHTML=statGrid([[fk+'개','초파리 · 그림에서 센 무리','f'],[pct(fm,0),'초파리 · 정답과 겹침','f'],[rk+'개','Money-Robo · 실루엣이 고른 무리','r'],[pct(rm,0),'Money-Robo · 정답과 겹침','r']])+
-    '<div class="two" style="margin-top:12px"><figure style="margin:0"><canvas class="fig" id="dA" aria-label="초파리가 읽은 t-SNE 지도. 덩어리 여섯 개가 보인다"></canvas><figcaption class="muted" style="font-size:13px">초파리 · t-SNE(이웃 8) 그림</figcaption></figure><figure style="margin:0"><canvas class="fig" id="dB" aria-label="k별 평균 실루엣 막대. k=4가 가장 높다"></canvas><figcaption class="muted" style="font-size:13px">Money-Robo · k별 평균 실루엣</figcaption></figure></div>'+
+   measure:'금고 속 진짜 무리 수는 '+T+'개예요. 초파리 쪽은 이웃 8 그림에서 덩어리 '+fk+'개를 셌고, 주판봇 쪽은 평균 실루엣이 가장 높은 k = '+rk+'(점수 '+fx(U.sil(rk).mean,3)+')를 골랐어요. 그 수로 K-평균을 돌려 숨긴 정답과 맞춰 보면 '+pct(fm,0)+' 대 '+pct(rm,0)+'예요.',
+   verdict:'이번엔 차가운 숫자가 이겼다. t-SNE는 보기 좋게 펼치는 도구지 무리 수를 세는 도구가 아니다. 이 구역은 주판봇 쪽이다.',key:'군집 수는 지표와 업무 의미로 정한다. 그림만 보고 정하지 않는다.',
+   render:function(box){box.innerHTML=statGrid([[fk+'개','초파리 · 그림에서 센 무리','f'],[pct(fm,0),'초파리 · 정답과 겹침','f'],[rk+'개','주판봇 · 실루엣이 고른 무리','r'],[pct(rm,0),'주판봇 · 정답과 겹침','r']])+
+    '<div class="two" style="margin-top:12px"><figure style="margin:0"><canvas class="fig" id="dA" aria-label="초파리가 읽은 t-SNE 지도. 덩어리 여섯 개가 보인다"></canvas><figcaption class="muted" style="font-size:13px">초파리 · t-SNE(이웃 8) 그림</figcaption></figure><figure style="margin:0"><canvas class="fig" id="dB" aria-label="k별 평균 실루엣 막대. k=4가 가장 높다"></canvas><figcaption class="muted" style="font-size:13px">주판봇 · k별 평균 실루엣</figcaption></figure></div>'+
     '<div class="card" style="margin-top:12px;border-left:4px solid var(--amber)"><span class="tag">실전 체크 ③</span><p style="margin:0">군집 수는 지표(엘보, 실루엣)와 업무 의미로 함께 정한다. 시각화 그림만 보고 정하지 않는다.</p></div>';
     function dr(){plot2($('dA'),U.E[FLYP],function(){return cols().amber},210,{r:2.5,stamp:'미리 계산한 결과'});
      var cv=$('dB'),H=210,Wd=fit(cv,H),ctx=cv.getContext('2d'),C=cols(),L=30,R=Wd-10,T2=14,B=H-24,bw=(R-L)/9;ctx.clearRect(0,0,Wd,H);
