@@ -1,0 +1,274 @@
+{
+ "version": "1.0",
+ "page": "4-13_unsupervised_metrics",
+ "nodes": [
+  {
+   "id": "lab:method/tsne",
+   "type": "Concept",
+   "label": {
+    "ko": "t-SNE",
+    "en": "t-SNE"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#m3",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ai",
+    "ml",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "가까운 점의 이웃 구조를 지키며 2·3차원으로 줄이는 비선형 차원 축소."
+   }
+  },
+  {
+   "id": "lab:concept/prompt",
+   "type": "Concept",
+   "label": {
+    "ko": "프롬프트",
+    "en": "prompt"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#prompt",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "AI에게 무엇을 만들지 알려 주는 글."
+   }
+  },
+  {
+   "id": "lab:metric/silhouette-score",
+   "type": "Metric",
+   "label": {
+    "ko": "실루엣 점수",
+    "en": "Silhouette score"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#m2",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "data",
+    "stats",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "(b−a)÷max(a,b), 1에 가까울수록 잘 묶임"
+   }
+  },
+  {
+   "id": "lab:method/k-means",
+   "type": "Method",
+   "label": {
+    "ko": "k-평균",
+    "en": "k-means"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "ml",
+    "genai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "k개 중심을 두고, 가까운 중심으로 묶고 중심을 평균으로 옮기기를 되풀이하는 방법."
+   }
+  },
+  {
+   "id": "lab:method/pca",
+   "type": "Term",
+   "label": {
+    "ko": "PCA",
+    "en": "principal component analysis"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#elbStat",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "stats",
+    "biz",
+    "math"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "주성분 분석. 분산이 가장 큰 방향의 축으로 투영하는 선형 차원 축소."
+   }
+  },
+  {
+   "id": "lab:concept/centroid",
+   "type": "Concept",
+   "label": {
+    "ko": "중심",
+    "en": "centroid"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#m1",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "ai",
+    "ml",
+    "genai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "묶음에 든 데이터들의 평균 위치."
+   }
+  },
+  {
+   "id": "lab:topic/tsne-umap",
+   "type": "Topic",
+   "label": {
+    "ko": "t-SNE·UMAP",
+    "en": "t-SNE and UMAP"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/prompting",
+   "type": "Topic",
+   "label": {
+    "ko": "프롬프팅",
+    "en": "Prompting"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/clustering",
+   "type": "Topic",
+   "label": {
+    "ko": "군집화",
+    "en": "Clustering"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/pca",
+   "type": "Topic",
+   "label": {
+    "ko": "주성분 분석",
+    "en": "Principal component analysis"
+   },
+   "page": "4-13_unsupervised_metrics",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:method/tsne",
+   "p": "lab:broader",
+   "o": "lab:topic/tsne-umap",
+   "anchor": "#m3",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/prompt",
+   "p": "lab:broader",
+   "o": "lab:topic/prompting",
+   "anchor": "#prompt",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:metric/silhouette-score",
+   "p": "lab:broader",
+   "o": "lab:topic/clustering",
+   "anchor": "#m2",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/pca",
+   "p": "lab:broader",
+   "o": "lab:topic/pca",
+   "anchor": "#elbStat",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/centroid",
+   "p": "lab:broader",
+   "o": "lab:topic/clustering",
+   "anchor": "#m1",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/pca",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:method/tsne",
+   "anchor": "#elbStat",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:concept/centroid",
+   "p": "lab:partOf",
+   "o": "lab:method/k-means",
+   "anchor": "#m1",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  }
+ ]
+}

@@ -1,0 +1,369 @@
+{
+ "version": "1.0",
+ "page": "4-14_rl_metrics",
+ "nodes": [
+  {
+   "id": "lab:concept/reward",
+   "type": "Concept",
+   "label": {
+    "ko": "보상",
+    "en": "Reward"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#series",
+   "level": 3,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24"
+  },
+  {
+   "id": "lab:concept/reward-design",
+   "type": "Method",
+   "label": {
+    "ko": "보상 설계",
+    "en": "Reward design"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "rl"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "보상 바꿔 보기와 일반화"
+   }
+  },
+  {
+   "id": "lab:method/learning-curve",
+   "type": "Method",
+   "label": {
+    "ko": "학습 곡선",
+    "en": "Learning curve"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#m1",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "data",
+    "stats",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "데이터를 더 모으면 나아질까? 가로는 학습 데이터 양, 두 선은 학습 점수와 검증 점수입니다."
+   }
+  },
+  {
+   "id": "lab:method/reinforcement-learning",
+   "type": "Concept",
+   "label": {
+    "ko": "강화학습",
+    "en": "reinforcement learning"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#ledgerInfo",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "fin",
+    "neuro",
+    "ml"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "행동하고 보상을 받으며 좋은 행동 규칙을 배우는 방법."
+   }
+  },
+  {
+   "id": "lab:concept/llm-agent",
+   "type": "Concept",
+   "label": {
+    "ko": "에이전트",
+    "en": "AI agent"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "logic",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "목표를 받아 도구를 부르고 여러 단계를 스스로 실행하는 AI 시스템."
+   }
+  },
+  {
+   "id": "lab:concept/prompt",
+   "type": "Concept",
+   "label": {
+    "ko": "프롬프트",
+    "en": "prompt"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#prompt",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "AI에게 무엇을 만들지 알려 주는 글."
+   }
+  },
+  {
+   "id": "lab:concept/exploration",
+   "type": "Concept",
+   "label": {
+    "ko": "탐험",
+    "en": "Exploration"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "rl"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "가끔 일부러 아무 수나 둬서 새 길을 알아본다."
+   }
+  },
+  {
+   "id": "lab:method/q-learning",
+   "type": "Method",
+   "label": {
+    "ko": "Q-러닝",
+    "en": "Q-learning"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "ml",
+    "ai",
+    "rl"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "상태-행동 가치 Q를 보상으로 고쳐 가는 강화학습 방법."
+   }
+  },
+  {
+   "id": "lab:topic/reward",
+   "type": "Topic",
+   "label": {
+    "ko": "보상",
+    "en": "Reward"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/generalization",
+   "type": "Topic",
+   "label": {
+    "ko": "일반화·과적합",
+    "en": "Generalization and overfitting"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#kg",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/mdp",
+   "type": "Topic",
+   "label": {
+    "ko": "마르코프 결정 과정",
+    "en": "Markov decision process"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/prompting",
+   "type": "Topic",
+   "label": {
+    "ko": "프롬프팅",
+    "en": "Prompting"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/exploration",
+   "type": "Topic",
+   "label": {
+    "ko": "탐험과 활용",
+    "en": "Exploration–exploitation"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/q-learning",
+   "type": "Topic",
+   "label": {
+    "ko": "Q-러닝",
+    "en": "Q-learning"
+   },
+   "page": "4-14_rl_metrics",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:concept/reward",
+   "p": "lab:broader",
+   "o": "lab:topic/reward",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/reward-design",
+   "p": "lab:broader",
+   "o": "lab:topic/reward",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/learning-curve",
+   "p": "lab:broader",
+   "o": "lab:topic/generalization",
+   "anchor": "#m1",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/llm-agent",
+   "p": "lab:broader",
+   "o": "lab:topic/mdp",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/prompt",
+   "p": "lab:broader",
+   "o": "lab:topic/prompting",
+   "anchor": "#prompt",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/exploration",
+   "p": "lab:broader",
+   "o": "lab:topic/exploration",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/q-learning",
+   "p": "lab:broader",
+   "o": "lab:topic/q-learning",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/reward",
+   "p": "lab:partOf",
+   "o": "lab:method/reinforcement-learning",
+   "anchor": "#series",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:concept/exploration",
+   "p": "lab:partOf",
+   "o": "lab:method/q-learning",
+   "anchor": "#series",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  }
+ ]
+}

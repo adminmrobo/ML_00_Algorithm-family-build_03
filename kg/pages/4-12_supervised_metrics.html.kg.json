@@ -1,0 +1,415 @@
+{
+ "version": "1.0",
+ "page": "4-12_supervised_metrics",
+ "nodes": [
+  {
+   "id": "lab:metric/accuracy",
+   "type": "Metric",
+   "label": {
+    "ko": "정확도",
+    "en": "Accuracy"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "맞힌 비율. 불균형 데이터에서 속기 쉽다."
+   }
+  },
+  {
+   "id": "lab:concept/regression",
+   "type": "Concept",
+   "label": {
+    "ko": "회귀",
+    "en": "Regression"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#m3",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "숫자를 맞히는 문제."
+   }
+  },
+  {
+   "id": "lab:concept/confusion-matrix",
+   "type": "Concept",
+   "label": {
+    "ko": "혼동 행렬",
+    "en": "Confusion matrix"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#m1",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "정답 클래스와 모델이 고른 클래스를 표로 세어 어떤 실수를 했는지 보여 준다."
+   }
+  },
+  {
+   "id": "lab:concept/precision-recall",
+   "type": "Concept",
+   "label": {
+    "ko": "정밀도와 재현율",
+    "en": "precision and recall"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#m2",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ai",
+    "ml",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "적은 쪽지 가운데 쓸모 있는 비율과, 쓸모 있는 말 가운데 적어 둔 비율."
+   }
+  },
+  {
+   "id": "lab:concept/classification",
+   "type": "Concept",
+   "label": {
+    "ko": "분류",
+    "en": "Classification"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "범주를 맞히는 문제."
+   }
+  },
+  {
+   "id": "lab:metric/recall",
+   "type": "Metric",
+   "label": {
+    "ko": "재현율",
+    "en": "Recall"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#m2",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "data",
+    "stats",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "실제 불량 중 잡은 비율."
+   }
+  },
+  {
+   "id": "lab:metric/precision",
+   "type": "Metric",
+   "label": {
+    "ko": "정밀도",
+    "en": "Precision"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#m2",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "data",
+    "stats",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "불량이라 한 것 중 진짜 불량의 비율."
+   }
+  },
+  {
+   "id": "lab:metric/precision-recall",
+   "type": "Metric",
+   "label": {
+    "ko": "정밀도·재현율",
+    "en": "Precision and recall"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "crime",
+    "stats",
+    "biz"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "경보 중 진짜 비율과 공격 중 잡은 비율"
+   }
+  },
+  {
+   "id": "lab:concept/prompt",
+   "type": "Concept",
+   "label": {
+    "ko": "프롬프트",
+    "en": "prompt"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#prompt",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "AI에게 무엇을 만들지 알려 주는 글."
+   }
+  },
+  {
+   "id": "lab:topic/accuracy-metrics",
+   "type": "Topic",
+   "label": {
+    "ko": "정확도·손실 지표",
+    "en": "Accuracy and loss metrics"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/confusion-matrix",
+   "type": "Topic",
+   "label": {
+    "ko": "혼동 행렬",
+    "en": "Confusion matrix"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/precision-recall",
+   "type": "Topic",
+   "label": {
+    "ko": "정밀도·재현율",
+    "en": "Precision and recall"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/crime-anomaly-detection",
+   "type": "Topic",
+   "label": {
+    "ko": "범죄 이상 탐지",
+    "en": "Anomaly detection for crime"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "crime"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/prompting",
+   "type": "Topic",
+   "label": {
+    "ko": "프롬프팅",
+    "en": "Prompting"
+   },
+   "page": "4-12_supervised_metrics",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:metric/accuracy",
+   "p": "lab:broader",
+   "o": "lab:topic/accuracy-metrics",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/confusion-matrix",
+   "p": "lab:broader",
+   "o": "lab:topic/confusion-matrix",
+   "anchor": "#m1",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/precision-recall",
+   "p": "lab:broader",
+   "o": "lab:topic/precision-recall",
+   "anchor": "#m2",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:metric/recall",
+   "p": "lab:broader",
+   "o": "lab:topic/precision-recall",
+   "anchor": "#m2",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:metric/precision",
+   "p": "lab:broader",
+   "o": "lab:topic/precision-recall",
+   "anchor": "#m2",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:metric/precision-recall",
+   "p": "lab:broader",
+   "o": "lab:topic/crime-anomaly-detection",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/prompt",
+   "p": "lab:broader",
+   "o": "lab:topic/prompting",
+   "anchor": "#prompt",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/regression",
+   "p": "lab:contrastsWith",
+   "o": "lab:concept/classification",
+   "anchor": "#m3",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:metric/recall",
+   "p": "lab:contrastsWith",
+   "o": "lab:metric/precision",
+   "anchor": "#m2",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:metric/accuracy",
+   "p": "lab:partOf",
+   "o": "lab:concept/confusion-matrix",
+   "anchor": "#series",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:concept/confusion-matrix",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:metric/precision-recall",
+   "anchor": "#m1",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:metric/precision",
+   "p": "lab:partOf",
+   "o": "lab:concept/confusion-matrix",
+   "anchor": "#m2",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:metric/recall",
+   "p": "lab:partOf",
+   "o": "lab:concept/confusion-matrix",
+   "anchor": "#m2",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:metric/precision",
+   "p": "lab:contrastsWith",
+   "o": "lab:metric/recall",
+   "anchor": "#m2",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  }
+ ]
+}

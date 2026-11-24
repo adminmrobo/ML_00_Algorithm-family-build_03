@@ -1,0 +1,33 @@
+{
+ "title": "4-13 비지도 가문의 장부 | 인공지능 알고리즘 패밀리 조직도",
+ "number": "04",
+ "series": "인공지능 알고리즘 패밀리 조직도 — 목차",
+ "date": "2026-11-24",
+ "version": "1.1",
+ "creator": [
+  {
+   "name": "안상선",
+   "role": "author"
+  }
+ ],
+ "contributor": [
+  {
+   "name": "AI 보조 제작",
+   "role": "assistant"
+  }
+ ],
+ "about": [
+  "lab:method/tsne",
+  "lab:concept/prompt",
+  "lab:metric/silhouette-score",
+  "lab:method/k-means",
+  "lab:method/pca"
+ ],
+ "basedOn": [],
+ "educationalLevel": "입문~중급",
+ "license": "",
+ "url": "https://adminmrobo.github.io/ML_00_Algorithm-family-build_03/4-13_unsupervised_metrics.html",
+ "registry": "KG_00_registry 0.3",
+ "seeAlso": "",
+ "suggestedCitation": "안상선 (2026). 4-13 비지도 가문의 장부 | 인공지능 알고리즘 패밀리 조직도. 인공지능 알고리즘 패밀리 조직도 — 목차, v1.1."
+}

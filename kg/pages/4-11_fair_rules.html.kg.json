@@ -1,0 +1,434 @@
+{
+ "version": "1.0",
+ "page": "4-11_fair_rules",
+ "nodes": [
+  {
+   "id": "lab:concept/cross-validation",
+   "type": "Method",
+   "label": {
+    "ko": "교차검증",
+    "en": "Cross-validation"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#m2",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "stats",
+    "ml",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "다섯 조각으로 다섯 번 재기"
+   }
+  },
+  {
+   "id": "lab:concept/deployment",
+   "type": "Concept",
+   "label": {
+    "ko": "배포",
+    "en": "Deployment"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#m4",
+   "level": 4,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24"
+  },
+  {
+   "id": "lab:concept/test-data",
+   "type": "Concept",
+   "label": {
+    "ko": "시험 데이터",
+    "en": "Test data"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "마지막 채점에만 쓰는 데이터."
+   }
+  },
+  {
+   "id": "lab:concept/prompt",
+   "type": "Concept",
+   "label": {
+    "ko": "프롬프트",
+    "en": "prompt"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#prompt",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "AI에게 무엇을 만들지 알려 주는 글."
+   }
+  },
+  {
+   "id": "lab:concept/data-leakage",
+   "type": "Concept",
+   "label": {
+    "ko": "데이터 누수",
+    "en": "Data leakage"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "fin",
+    "stats",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "예측 시점에 알 수 없는 정보가 입력에 들어간 상태."
+   }
+  },
+  {
+   "id": "lab:metric/accuracy",
+   "type": "Metric",
+   "label": {
+    "ko": "정확도",
+    "en": "Accuracy"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "맞힌 비율. 불균형 데이터에서 속기 쉽다."
+   }
+  },
+  {
+   "id": "lab:concept/validation-set",
+   "type": "Concept",
+   "label": {
+    "ko": "검증 데이터",
+    "en": "Validation set"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#m1",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "stats",
+    "ai",
+    "ml"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "학습에 쓰지 않고 설정과 멈출 때를 고르는 데 쓰는 데이터."
+   }
+  },
+  {
+   "id": "lab:concept/time-series",
+   "type": "Concept",
+   "label": {
+    "ko": "시계열",
+    "en": "time series"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#owlHost",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "시간 순서대로 쌓인 측정값."
+   }
+  },
+  {
+   "id": "lab:method/standardization",
+   "type": "Method",
+   "label": {
+    "ko": "표준화",
+    "en": "standardization"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#m4",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "특징마다 평균을 빼고 표준편차로 나눠 같은 눈금으로 맞추는 일."
+   }
+  },
+  {
+   "id": "lab:topic/cross-validation",
+   "type": "Topic",
+   "label": {
+    "ko": "교차검증",
+    "en": "Cross-validation"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "stats"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/deployment",
+   "type": "Topic",
+   "label": {
+    "ko": "배포",
+    "en": "Deployment"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/prompting",
+   "type": "Topic",
+   "label": {
+    "ko": "프롬프팅",
+    "en": "Prompting"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/data-leakage",
+   "type": "Topic",
+   "label": {
+    "ko": "데이터 누수",
+    "en": "Data leakage"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/accuracy-metrics",
+   "type": "Topic",
+   "label": {
+    "ko": "정확도·손실 지표",
+    "en": "Accuracy and loss metrics"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/data-splitting",
+   "type": "Topic",
+   "label": {
+    "ko": "훈련·검증·시험 분리",
+    "en": "Train/validation/test split"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/time-series",
+   "type": "Topic",
+   "label": {
+    "ko": "시계열 예측",
+    "en": "Time-series forecasting"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/feature-engineering",
+   "type": "Topic",
+   "label": {
+    "ko": "특징 공학",
+    "en": "Feature engineering"
+   },
+   "page": "4-11_fair_rules",
+   "anchor": "#kg",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:concept/cross-validation",
+   "p": "lab:broader",
+   "o": "lab:topic/cross-validation",
+   "anchor": "#m2",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/deployment",
+   "p": "lab:broader",
+   "o": "lab:topic/deployment",
+   "anchor": "#m4",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/prompt",
+   "p": "lab:broader",
+   "o": "lab:topic/prompting",
+   "anchor": "#prompt",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/data-leakage",
+   "p": "lab:broader",
+   "o": "lab:topic/data-leakage",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:metric/accuracy",
+   "p": "lab:broader",
+   "o": "lab:topic/accuracy-metrics",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/validation-set",
+   "p": "lab:broader",
+   "o": "lab:topic/data-splitting",
+   "anchor": "#m1",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/time-series",
+   "p": "lab:broader",
+   "o": "lab:topic/time-series",
+   "anchor": "#owlHost",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/standardization",
+   "p": "lab:broader",
+   "o": "lab:topic/feature-engineering",
+   "anchor": "#m4",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/data-leakage",
+   "p": "lab:evaluatedBy",
+   "o": "lab:metric/accuracy",
+   "anchor": "#series",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:concept/data-leakage",
+   "p": "lab:relatedTo",
+   "o": "lab:concept/test-data",
+   "anchor": "#series",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  }
+ ]
+}

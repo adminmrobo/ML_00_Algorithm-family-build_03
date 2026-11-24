@@ -1,0 +1,285 @@
+{
+ "version": "1.0",
+ "page": "4-15_final_and_choice",
+ "nodes": [
+  {
+   "id": "lab:concept/prompt",
+   "type": "Concept",
+   "label": {
+    "ko": "프롬프트",
+    "en": "prompt"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#prompt",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai",
+    "llm"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "AI에게 무엇을 만들지 알려 주는 글."
+   }
+  },
+  {
+   "id": "lab:concept/deployment",
+   "type": "Concept",
+   "label": {
+    "ko": "배포",
+    "en": "Deployment"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#series",
+   "level": 4,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "ml",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24"
+  },
+  {
+   "id": "lab:method/logistic-regression",
+   "type": "Method",
+   "label": {
+    "ko": "로지스틱 회귀 (다항)",
+    "en": "Multinomial logistic regression"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#m1",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "explained",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "정답별 점수 → 소프트맥스 → 확률"
+   }
+  },
+  {
+   "id": "lab:method/reinforcement-learning",
+   "type": "Concept",
+   "label": {
+    "ko": "강화학습",
+    "en": "reinforcement learning"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#pathBox",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "fin",
+    "neuro",
+    "ml"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "행동하고 보상을 받으며 좋은 행동 규칙을 배우는 방법."
+   }
+  },
+  {
+   "id": "lab:concept/reward",
+   "type": "Concept",
+   "label": {
+    "ko": "보상",
+    "en": "Reward"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#pathBox",
+   "level": 3,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "ml",
+    "ai"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24"
+  },
+  {
+   "id": "lab:metric/accuracy",
+   "type": "Metric",
+   "label": {
+    "ko": "정확도",
+    "en": "Accuracy"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#series",
+   "level": 2,
+   "status": "known",
+   "confidence": "medium",
+   "coverage": "mentioned",
+   "domain": [
+    "stats",
+    "biz",
+    "fin"
+   ],
+   "match": [],
+   "auto": "autokg-2026-11-24",
+   "definition": {
+    "ko": "맞힌 비율. 불균형 데이터에서 속기 쉽다."
+   }
+  },
+  {
+   "id": "lab:topic/prompting",
+   "type": "Topic",
+   "label": {
+    "ko": "프롬프팅",
+    "en": "Prompting"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/deployment",
+   "type": "Topic",
+   "label": {
+    "ko": "배포",
+    "en": "Deployment"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#kg",
+   "level": 4,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/glm-logistic",
+   "type": "Topic",
+   "label": {
+    "ko": "로지스틱 회귀(GLM)",
+    "en": "Logistic regression (GLM)"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "stats"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/reward",
+   "type": "Topic",
+   "label": {
+    "ko": "보상",
+    "en": "Reward"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#kg",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  },
+  {
+   "id": "lab:topic/accuracy-metrics",
+   "type": "Topic",
+   "label": {
+    "ko": "정확도·손실 지표",
+    "en": "Accuracy and loss metrics"
+   },
+   "page": "4-15_final_and_choice",
+   "anchor": "#kg",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "mentioned",
+   "domain": [
+    "ai"
+   ],
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:concept/prompt",
+   "p": "lab:broader",
+   "o": "lab:topic/prompting",
+   "anchor": "#prompt",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/deployment",
+   "p": "lab:broader",
+   "o": "lab:topic/deployment",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/logistic-regression",
+   "p": "lab:broader",
+   "o": "lab:topic/glm-logistic",
+   "anchor": "#m1",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:concept/reward",
+   "p": "lab:broader",
+   "o": "lab:topic/reward",
+   "anchor": "#pathBox",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:metric/accuracy",
+   "p": "lab:broader",
+   "o": "lab:topic/accuracy-metrics",
+   "anchor": "#series",
+   "confidence": "medium"
+  },
+  {
+   "s": "lab:method/logistic-regression",
+   "p": "lab:evaluatedBy",
+   "o": "lab:metric/accuracy",
+   "anchor": "#m1",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  },
+  {
+   "s": "lab:concept/reward",
+   "p": "lab:partOf",
+   "o": "lab:method/reinforcement-learning",
+   "anchor": "#pathBox",
+   "confidence": "medium",
+   "note": "다른 해설 페이지에서 확인된 관계"
+  }
+ ]
+}
